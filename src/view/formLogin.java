@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package aplikasi.peminjaman.ruangan.view;
+package view;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -49,29 +49,25 @@ public class formLogin extends javax.swing.JFrame {
             }
         });
 
-        txtbxNim.setText("jTextField1");
-
-        txtbxPass.setText("jPasswordField1");
-
         javax.swing.GroupLayout panelBgLayout = new javax.swing.GroupLayout(panelBg);
         panelBg.setLayout(panelBgLayout);
         panelBgLayout.setHorizontalGroup(
             panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
-                        .addComponent(txtbxNim, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146))))
             .addGroup(panelBgLayout.createSequentialGroup()
-                .addGap(180, 180, 180)
+                .addGap(207, 207, 207)
+                .addComponent(labelBackgroud, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
+                .addContainerGap(270, Short.MAX_VALUE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
                 .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtbxPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelBackgroud, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(130, Short.MAX_VALUE))
+                    .addComponent(txtbxPass, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBgLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtbxNim, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(92, 92, 92))
         );
         panelBgLayout.setVerticalGroup(
             panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,8 +109,11 @@ public class formLogin extends javax.swing.JFrame {
                 if(rs.next()){
 //                    FormMenu s= new FormMenu();
 //                    s.setVisible(true);
-                    dispose();
-                }else{JOptionPane.showMessageDialog(null, "NIM atau Password salah!");}
+            System.out.println("Sukses");
+//                    dispose();
+                }else{JOptionPane.showMessageDialog(null, "NIM atau Password salah!");
+                txtbxNim.setText(null);
+                txtbxPass.setText(null);}
             }
         }catch (SQLException e) {
             System.out.println("Error connection");
