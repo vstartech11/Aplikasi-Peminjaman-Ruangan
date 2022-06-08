@@ -3,13 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package aplikasi.peminjaman.ruangan.view;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author vstartech
  */
 public class formLogin extends javax.swing.JFrame {
-
+    String sqlcon="jdbc:sqlserver://localhost:1433;databaseName=dbRuang;integratedSecurity=false;trustServerCertificate=true;";
+    Connection conn=null;
+    ResultSet rs=null;
+    PreparedStatement pst=null;
+    Statement st=null;
+    int curRow=0;
+    
     /**
      * Creates new form formLogin
      */
@@ -29,6 +37,8 @@ public class formLogin extends javax.swing.JFrame {
         panelBg = new javax.swing.JPanel();
         labelBackgroud = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
+        txtbxNim = new javax.swing.JTextField();
+        txtbxPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,25 +49,40 @@ public class formLogin extends javax.swing.JFrame {
             }
         });
 
+        txtbxNim.setText("jTextField1");
+
+        txtbxPass.setText("jPasswordField1");
+
         javax.swing.GroupLayout panelBgLayout = new javax.swing.GroupLayout(panelBg);
         panelBg.setLayout(panelBgLayout);
         panelBgLayout.setHorizontalGroup(
             panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBgLayout.createSequentialGroup()
-                .addGap(233, 233, 233)
-                .addComponent(labelBackgroud, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
+                        .addComponent(txtbxNim, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146))))
+            .addGroup(panelBgLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtbxPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelBackgroud, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         panelBgLayout.setVerticalGroup(
             panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBgLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(68, 68, 68)
+                .addComponent(txtbxNim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(labelBackgroud)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(txtbxPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
@@ -78,6 +103,23 @@ public class formLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        
+        try {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            try (Connection conn = DriverManager.getConnection(sqlcon, "bintang", "441840");){
+                String sql = "select * from tblUser where nim='"+txtbxNim.getText()+"' and password='"+txtbxPass.getText()+"'"; 
+                st=conn.createStatement();
+                rs=st.executeQuery(sql);
+                if(rs.next()){
+//                    FormMenu s= new FormMenu();
+//                    s.setVisible(true);
+                    dispose();
+                }else{JOptionPane.showMessageDialog(null, "NIM atau Password salah!");}
+            }
+        }catch (SQLException e) {
+            System.out.println("Error connection");
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
@@ -111,6 +153,7 @@ public class formLogin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new formLogin().setVisible(true);
+                
             }
         });
     }
@@ -119,5 +162,7 @@ public class formLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel labelBackgroud;
     private javax.swing.JPanel panelBg;
+    private javax.swing.JTextField txtbxNim;
+    private javax.swing.JPasswordField txtbxPass;
     // End of variables declaration//GEN-END:variables
 }
