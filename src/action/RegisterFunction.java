@@ -43,15 +43,14 @@ public class RegisterFunction extends Register{
         switch(jawab){
             case JOptionPane.YES_OPTION:
                 setVisible(false);
-                MainMethod layout = new MainMethod(this.username);
+                // MainMethod layout = new MainMethod(this.username);
                 // layout.mainSetUsername(this.username);
                 // layout.adminOrNot();
-                layout.setLocationRelativeTo(this);
-                layout.setVisible(true);
+                // layout.setLocationRelativeTo(this);
+                // layout.setVisible(true);
                 break;
             case JOptionPane.YES_NO_CANCEL_OPTION:
                 break;
-                
         }
     }
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -59,5 +58,10 @@ public class RegisterFunction extends Register{
         loginForm.setLocationRelativeTo(this);
         loginForm.setVisible(true);
         this.setVisible(false);
+    }
+
+    public static void main(String[] args) {
+        Register register = new RegisterFunction();
+        register.setVisible(true);
     }
 }

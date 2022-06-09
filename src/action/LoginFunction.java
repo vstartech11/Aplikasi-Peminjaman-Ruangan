@@ -42,8 +42,7 @@ public class LoginFunction extends LoginForm{
 
 
   public static void main(String[] args) {
-    LoginFunction loginForm = new LoginFunction();
-    loginForm.setVisible(true);
+    LoginForm loginForm = new LoginFunction();
   }
   
 }
