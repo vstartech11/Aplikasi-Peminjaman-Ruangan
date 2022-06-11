@@ -3,12 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER
  */
 public class LoginForm extends javax.swing.JFrame {
-
+    String sqlcon="jdbc:sqlserver://localhost:1433;databaseName=dbRuang;integratedSecurity=false;trustServerCertificate=true;";
+    Connection conn=null;
+    ResultSet rs=null;
+    PreparedStatement pst=null;
+    Statement st=null;
+    int curRow=0;
     
     
     
@@ -18,8 +34,9 @@ public class LoginForm extends javax.swing.JFrame {
     /**
      * Creates new form LoginForm
      */
-    public LoginForm() {
+    public LoginForm() throws SQLException {
         initComponents();
+        conn = DriverManager.getConnection(sqlcon, "bintang", "441840");
     }
 
     /**
@@ -181,6 +198,26 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login1ActionPerformed
         // TODO add your handling code here:
+        try {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            //try ();){
+                String sql = "select * from tblUser where nim='"+nim_field.getText()+"' and password='"+pass_field.getText()+"'"; 
+                st=conn.createStatement();
+                rs=st.executeQuery(sql);
+                System.out.println(conn);
+                if(rs.next()){
+                    MainLayout s= new MainLayout();
+                    s.setVisible(true);
+            System.out.println("Sukses");
+                    dispose();
+                }else{JOptionPane.showMessageDialog(null, "NIM atau Password salah!");
+                nim_field.setText(null);
+                pass_field.setText(null);}
+            //}
+        }catch (SQLException e) {
+            System.out.println("Error connection");
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_btn_login1ActionPerformed
     public String getNim(){
         return nim_field.getText();
@@ -218,7 +255,11 @@ public class LoginForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginForm().setVisible(true);
+                try {
+                    new LoginForm().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
