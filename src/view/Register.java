@@ -17,7 +17,7 @@ public class Register extends javax.swing.JFrame {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
+    // @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -164,7 +164,7 @@ public class Register extends javax.swing.JFrame {
     public String getEmail(){return email.getText();}
 
     public String getPassword(){
-        String passwordText = new String(password.getText());
+        String passwordText = new String(password.getPassword());
         return passwordText;
     }
 
