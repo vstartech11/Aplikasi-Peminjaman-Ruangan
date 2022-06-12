@@ -4,8 +4,8 @@ import view.LoginForm;
 import view.MainLayout;
 
 public class MainMethod extends MainLayout {
-
-    public MainMethod(String nim, String nama, String status) {
+    private String status;
+    public MainMethod(){
         logoutMenu.setEnabled(false);
         peminjamanMenu.setEnabled(false);
         pengelolaanMenu.setEnabled(false);
@@ -16,6 +16,15 @@ public class MainMethod extends MainLayout {
                 loginMenuActionPerformed(evt);
             }
         });
+    }
+
+    public MainMethod(String nim, String nama, String status) {
+        this.status = status;
+        if (this.status.equals("ADMIN")) {
+            setPengelolaanVisibility(true);
+        } else {
+            setPengelolaanVisibility(false);
+        }
     }
 
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
