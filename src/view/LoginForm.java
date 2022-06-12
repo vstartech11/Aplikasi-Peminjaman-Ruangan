@@ -68,7 +68,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         btn_register.setBackground(new java.awt.Color(153, 153, 153));
         btn_register.setForeground(new java.awt.Color(25, 44, 42));
-        btn_register.setText("Register");
+        btn_register.setText("Daftar");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Aplikasi Peminjaman Ruangan ITK");
