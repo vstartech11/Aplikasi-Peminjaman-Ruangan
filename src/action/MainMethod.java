@@ -52,6 +52,7 @@ public class MainMethod extends MainLayout {
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
         LoginForm login = new LoginFunction();
         login.setVisible(true);
+        dispose();
     }
 
     private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
@@ -60,7 +61,7 @@ public class MainMethod extends MainLayout {
     }
 
     public static void main(String[] args) {
-        MainLayout mainLayout = new MainMethod("dawd", "Dawd", "ADMIN");
+        MainLayout mainLayout = new MainMethod();
         mainLayout.setVisible(true);
     }
 }
