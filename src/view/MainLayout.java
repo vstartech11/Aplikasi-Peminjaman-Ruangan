@@ -1,4 +1,8 @@
 package view;
+  
+import java.time.LocalDateTime;  
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -65,6 +69,9 @@ public class MainLayout extends javax.swing.JFrame {
         showNim.setMaximumSize(new java.awt.Dimension(7, 19));
 
         showTanggal.setMaximumSize(new java.awt.Dimension(7, 19));
+        LocalDate localdate = LocalDate.now();
+        showTanggal.setText(String.valueOf(localdate));
+        showTanggal.setEditable(false);
 
         showStatus.setToolTipText("");
         showStatus.setMaximumSize(new java.awt.Dimension(7, 19));
@@ -116,9 +123,9 @@ public class MainLayout extends javax.swing.JFrame {
         ruanganMenu.add(rekapMenu);
 
         menuBar.add(ruanganMenu);
-        showNama.setEnabled(false);
-        showNim.setEnabled(false);
-        showStatus.setEnabled(false);
+        showNama.setEditable(false);
+        showNim.setEditable(false);
+        showStatus.setEditable(false);
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,7 +281,7 @@ public class MainLayout extends javax.swing.JFrame {
     public javax.swing.JTextField showNama;
     public javax.swing.JTextField showNim;
     public javax.swing.JTextField showStatus;
-    private javax.swing.JTextField showTanggal;
+    public javax.swing.JTextField showTanggal;
     private javax.swing.JLabel statusText;
     private javax.swing.JLabel tanggalText;
     // End of variables declaration//GEN-END:variables

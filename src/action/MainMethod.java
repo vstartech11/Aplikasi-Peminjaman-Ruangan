@@ -4,6 +4,7 @@ import view.LoginForm;
 import view.MainLayout;
 import view.PeminjamanRuanganLayout;
 
+
 public class MainMethod extends MainLayout {
 
     public MainMethod() {
@@ -56,7 +57,6 @@ public class MainMethod extends MainLayout {
         PeminjamanRuanganLayout peminjaman = new PeminjamanFunction();
         peminjaman.setVisible(true);
     }
-
     public static void main(String[] args) {
         MainLayout mainLayout = new MainMethod("dawd", "Dawd", "ADMIN");
         mainLayout.setVisible(true);
