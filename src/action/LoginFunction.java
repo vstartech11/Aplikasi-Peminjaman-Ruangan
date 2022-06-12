@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import view.MainLayout;
 import view.LoginForm;
+import view.Register;
 
 public class LoginFunction extends LoginForm {
   Connection conn = null;
@@ -73,7 +74,7 @@ public class LoginFunction extends LoginForm {
   }
 
   private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_registerActionPerformed
-    RegisterFunction registerForm = new RegisterFunction();
+    Register registerForm = new RegisterFunction();
     registerForm.setLocationRelativeTo(this);
     registerForm.setVisible(true);
     this.dispose();
