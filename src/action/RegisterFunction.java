@@ -34,8 +34,6 @@ public class RegisterFunction extends Register {
 
         noHp.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent ke){
-                String value = noHp.getText();
-                int l = value.length();
                 if ((ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') || ke.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
                     noHp.setEditable(true);
                  } else {
@@ -103,9 +101,4 @@ public class RegisterFunction extends Register {
         java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
      }
-
-    public static void main(String[] args) {
-        Register register = new RegisterFunction();
-        register.setVisible(true);
-    }
 }

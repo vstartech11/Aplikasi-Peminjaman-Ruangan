@@ -53,10 +53,12 @@ public class MainMethod extends MainLayout {
         LoginForm login = new LoginFunction();
         login.setVisible(true);
     }
+
     private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
         PeminjamanRuanganLayout peminjaman = new PeminjamanFunction();
         peminjaman.setVisible(true);
     }
+
     public static void main(String[] args) {
         MainLayout mainLayout = new MainMethod("dawd", "Dawd", "ADMIN");
         mainLayout.setVisible(true);
