@@ -26,7 +26,7 @@ public class LoginFunction extends LoginForm{
     this.password =getPassword();
     if (nim.equals("admin")&&password.equals("admin")){
       this.dispose();
-      MainLayout main =new MainLayout();
+      MainLayout main = new MainLayout();
       main.setVisible(true);
     }
     else{
@@ -43,6 +43,7 @@ public class LoginFunction extends LoginForm{
 
   public static void main(String[] args) {
     LoginForm loginForm = new LoginFunction();
+    loginForm.setVisible(true);
   }
   
 }
