@@ -2,6 +2,7 @@ package action;
 
 import view.LoginForm;
 import view.MainLayout;
+import view.PeminjamanRuanganLayout;
 
 public class MainMethod extends MainLayout {
 
@@ -36,6 +37,11 @@ public class MainMethod extends MainLayout {
                 logoutMenuActionPerformed(evt);
             }
         });
+        peminjamanMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                peminjamanMenuActionPerformed(evt);
+            }
+        });
     }
 
     private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,6 +51,10 @@ public class MainMethod extends MainLayout {
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
         LoginForm login = new LoginFunction();
         login.setVisible(true);
+    }
+    private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
+        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction();
+        peminjaman.setVisible(true);
     }
 
     public static void main(String[] args) {
