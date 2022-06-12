@@ -31,6 +31,18 @@ public class MainMethod extends MainLayout {
         } else {
             setPengelolaanVisibility(false);
         }
+
+        logoutMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutMenuActionPerformed(evt);
+            }
+        });
+    }
+
+    private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {
+        this.dispose();
+        MainLayout mainLayout = new MainMethod();
+        mainLayout.setVisible(true);
     }
 
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
