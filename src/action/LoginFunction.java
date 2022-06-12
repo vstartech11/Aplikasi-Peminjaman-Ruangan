@@ -39,6 +39,8 @@ public class LoginFunction extends LoginForm {
       if (rs.next()) {
         MainLayout s = new MainMethod(rs.getString("nim"), rs.getString("nama"), rs.getString("status"));
         s.setVisible(true);
+        conn.close();
+        dispose();
       } else {
         JOptionPane.showMessageDialog(null, "NIM atau Password Salah !");
       }
