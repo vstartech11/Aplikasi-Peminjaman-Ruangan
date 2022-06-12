@@ -4,9 +4,6 @@ import view.LoginForm;
 import view.MainLayout;
 
 public class MainMethod extends MainLayout {
-    private String status = null;
-    private String nama = null;
-    private String nim = null;
 
     public MainMethod() {
         logoutMenu.setEnabled(false);

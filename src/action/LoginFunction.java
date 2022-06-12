@@ -10,7 +10,6 @@ public class LoginFunction extends LoginForm {
   ResultSet rs = null;
   PreparedStatement pst = null;
   Statement st = null;
-  int curRow = 0;
   private String nim;
   private String password;
 

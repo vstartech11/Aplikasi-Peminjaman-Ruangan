@@ -18,17 +18,4 @@ public class Koneksi {
             return null;
         }
     }
-
-    public ResultSet query(String sql) {
-        ResultSet rs = null;
-        Statement st = null;
-        int curRow = 0;
-        try {
-            st = conn.createStatement();
-            rs = st.executeQuery(sql);
-            return rs;
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-    }
 }
