@@ -35,17 +35,13 @@ public class PinjamRuang extends javax.swing.JFrame {
         try {
             st = conn.createStatement();
             rs = st.executeQuery(sql);
-            rows = rs.getRow();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, rs.getString(2));
-                // Object[] rowData = { rs.getInt(1), rs.getString(2), rs.getString(3),
-                // rs.getInt(4), rs.getString(5),
-                // rs.getString(6), rs.getString(7), rs.getString(8) };
-                Object[][] rowData = { { new Integer(1), "G102", "Kelas", new Integer(80), "Tersedia", "Tersedia",
-                        "Tersedia", "Tersedia" } };
-                String[] columnNames = { "Id Ruangan", "Kode Ruangan", "Fasilitas", "Kursi Max", "Sesi 1", "Sesi 2",
-                        "Sesi 3", "Sesi 4" };
-                jTable1 = new JTable(rowData, columnNames);
+                JOptionPane.showMessageDialog(null, rs.getString(1));
+                String[] rowData = { rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7), rs.getString(8) };
+                model.addRow(rowData);
             }
         } catch (Exception e) {
             // TODO: handle exception
