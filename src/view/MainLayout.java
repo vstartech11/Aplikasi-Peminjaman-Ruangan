@@ -116,7 +116,9 @@ public class MainLayout extends javax.swing.JFrame {
         ruanganMenu.add(rekapMenu);
 
         menuBar.add(ruanganMenu);
-
+        showNama.setEnabled(false);
+        showNim.setEnabled(false);
+        showStatus.setEnabled(false);
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
