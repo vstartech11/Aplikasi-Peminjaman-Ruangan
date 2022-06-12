@@ -22,14 +22,11 @@ public class MainMethod extends MainLayout {
     }
 
     public MainMethod(String nim, String nama, String status) {
-        this.nim = nim;
-        this.nama = nama;
-        this.status = status;
+        this.showNama.setText(nama);
+        this.showNim.setText(nim);
+        this.showStatus.setText(status);
 
-        logoutMenu.setEnabled(false);
-        peminjamanMenu.setEnabled(false);
-        rekapMenu.setEnabled(false);
-        if (this.status.equals("ADMIN")) {
+        if (status.equals("ADMIN")) {
             setPengelolaanVisibility(true);
         } else {
             setPengelolaanVisibility(false);
