@@ -85,7 +85,8 @@ public class PeminjamanRuanganLayout extends javax.swing.JFrame {
             tableContent.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        gedungInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "G", "E", "F" }));
+        gedungInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { //"G", "E", "F"
+    }));
         gedungInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gedungInputActionPerformed(evt);
@@ -95,7 +96,8 @@ public class PeminjamanRuanganLayout extends javax.swing.JFrame {
         gedungText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         gedungText.setText("Gedung :");
 
-        namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { //"Item 1", "Item 2", "Item 3", "Item 4"
+    }));
         namaRuanganInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaRuanganInputActionPerformed(evt);
@@ -110,7 +112,8 @@ public class PeminjamanRuanganLayout extends javax.swing.JFrame {
         tanggalPinjamText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tanggalPinjamText.setText("Tanggal Pinjam :");
 
-        sesiInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sesi 1", "Sesi 2", "Sesi 3", "Sesi 4" }));
+        sesiInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sesi 1", "Sesi 2", "Sesi 3", "Sesi 4"
+    }));
         sesiInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sesiInputActionPerformed(evt);
@@ -305,21 +308,21 @@ public class PeminjamanRuanganLayout extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton fileButton;
-    public javax.swing.JButton backButton;
-    private javax.swing.JComboBox<String> gedungInput;
+    protected javax.swing.JButton backButton;
+    protected javax.swing.JComboBox<String> gedungInput;
     private javax.swing.JLabel gedungText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> namaRuanganInput;
+    protected javax.swing.JComboBox<String> namaRuanganInput;
     private javax.swing.JLabel namaRuanganText;
-    private javax.swing.JComboBox<String> sesiInput;
+    protected javax.swing.JComboBox<String> sesiInput;
     private javax.swing.JLabel sesiText;
-    private javax.swing.JTextField showFilePath;
-    private javax.swing.JTextField statusShow;
+    protected javax.swing.JTextField showFilePath;
+    protected javax.swing.JTextField statusShow;
     private javax.swing.JLabel statusText;
     private javax.swing.JTable tableContent;
-    private com.toedter.calendar.JDateChooser tanggalInput;
+    protected com.toedter.calendar.JDateChooser tanggalInput;
     private javax.swing.JLabel tanggalPinjamText;
     // End of variables declaration//GEN-END:variables
 }
