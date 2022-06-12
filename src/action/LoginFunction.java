@@ -4,9 +4,9 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import view.MainLayout;
 import view.LoginForm;
+import action.Koneksi;
 
 public class LoginFunction extends LoginForm {
-  String sqlcon = "jdbc:sqlserver://localhost:1433;databaseName=dbRuang;integratedSecurity=false;trustServerCertificate=true;";
   Connection conn = null;
   ResultSet rs = null;
   PreparedStatement pst = null;
@@ -16,6 +16,7 @@ public class LoginFunction extends LoginForm {
   private String password;
 
   public LoginFunction() {
+    conn = Koneksi.koneksi();
     btn_register.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btn_registerActionPerformed(evt);
@@ -29,28 +30,44 @@ public class LoginFunction extends LoginForm {
   }
 
   public void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {
+    JOptionPane.showMessageDialog(null, "tersambung, " + conn);
     nim = getNim();
     password = getPassword();
+    String sql = "select * from tblUser where nim='" + nim + "' and password='" + password + "'";
     try {
-      String sql = "select * from tblUser where nim='" + nim + "' and password='" + password
-          + "'";
       st = conn.createStatement();
       rs = st.executeQuery(sql);
-      System.out.println(conn);
       if (rs.next()) {
-        MainLayout s = new MainLayout();
+        MainLayout s = new MainMethod(rs.getString(1));
         s.setVisible(true);
-        System.out.println("Sukses");
-        dispose();
       } else {
-        JOptionPane.showMessageDialog(null, "NIM atau Password salah!");
-        nim_field.setText(null);
-        pass_field.setText(null);
+        JOptionPane.showMessageDialog(null, "NIM atau Password Salah !");
       }
-    } catch (SQLException e) {
-      System.out.println("Error connection");
+    } catch (Exception e) {
       JOptionPane.showMessageDialog(null, e);
     }
+    // nim = getNim();
+    // password = getPassword();
+    // try (Connection conn = DriverManager.getConnection(sqlconn, "bintang",
+    // "441840")) {
+
+    // st = conn.createStatement();
+    // rs = st.executeQuery(sql);
+    // System.out.println(conn);
+    // if (rs.next()) {
+    // MainLayout s = new MainLayout();
+    // s.setVisible(true);
+    // System.out.println("Sukses");
+    // dispose();
+    // } else {
+    // JOptionPane.showMessageDialog(null, "NIM atau Password salah!");
+    // nim_field.setText(null);
+    // pass_field.setText(null);
+    // }
+    // } catch (SQLException e) {
+    // System.out.println("Error connection");
+    // JOptionPane.showMessageDialog(null, e);
+    // }
 
   }
 
