@@ -36,7 +36,7 @@ public class MainLayout extends javax.swing.JFrame {
         showStatus = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         menuDashboard = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        loginMenu = new javax.swing.JMenuItem();
         logoutMenu = new javax.swing.JMenuItem();
         ruanganMenu = new javax.swing.JMenu();
         peminjamanMenu = new javax.swing.JMenuItem();
@@ -74,13 +74,13 @@ public class MainLayout extends javax.swing.JFrame {
 
         menuDashboard.setText("Akun");
 
-        jMenuItem1.setText("Login");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        loginMenu.setText("Login");
+        loginMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                loginMenuActionPerformed(evt);
             }
         });
-        menuDashboard.add(jMenuItem1);
+        menuDashboard.add(loginMenu);
 
         logoutMenu.setText("Logout");
         menuDashboard.add(logoutMenu);
@@ -159,9 +159,9 @@ public class MainLayout extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rekapMenuActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_loginMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,7 +202,7 @@ public class MainLayout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem loginMenu;
     public javax.swing.JMenuItem logoutMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuDashboard;
