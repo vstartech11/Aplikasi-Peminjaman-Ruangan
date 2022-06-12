@@ -62,7 +62,7 @@ public class LoginFunction extends LoginForm {
   }// GEN-LAST:event_btn_loginActionPerformed
 
   public static void main(String[] args) {
-    LoginForm s = new LoginForm();
+    LoginForm s = new LoginFunction();
     s.setVisible(true);
   }
 

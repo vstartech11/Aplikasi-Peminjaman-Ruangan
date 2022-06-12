@@ -1,6 +1,7 @@
 package action;
 import view.Register;
 import view.formLogin;
+import view.MainLayout;
 
 public class MainMethod extends MainLayout {
     private String username;
