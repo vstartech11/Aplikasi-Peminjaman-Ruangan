@@ -45,7 +45,6 @@ public class Register extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setName("formRegister"); // NOI18N
-        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 720));
@@ -272,7 +271,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField nim;
     private javax.swing.JLabel nimText;
     private javax.swing.JLabel noHPText;
-    private javax.swing.JTextField noHp;
+    public javax.swing.JTextField noHp;
     private javax.swing.JPasswordField password;
     private javax.swing.JLabel passwordText;
     public javax.swing.JButton registerButton;

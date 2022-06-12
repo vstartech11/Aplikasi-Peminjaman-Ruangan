@@ -4,6 +4,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import view.Register;
 import view.LoginForm;
+import java.awt.event.*;
 
 public class RegisterFunction extends Register {
     Connection conn = null;
@@ -29,6 +30,18 @@ public class RegisterFunction extends Register {
                 backButtonActionPerformed(evt);
             }
         });
+
+        noHp.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke){
+                String value = noHp.getText();
+                int l = value.length();
+                if ((ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') || ke.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
+                    noHp.setEditable(true);
+                 } else {
+                    noHp.setEditable(false);
+                 }
+            }
+        });
     }
 
     public void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_registerButtonActionPerformed
@@ -39,22 +52,26 @@ public class RegisterFunction extends Register {
         this.noTelp = getNoHP();
         String sql = "insert into tblUser(nim,nama,email,noTelp,password,status) values ('" + nim + "','" + nama
                 + "','" + email + "','" + noTelp + "','" + password + "','USER')";
-        try {
-            st = conn.createStatement();
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Akun berhasil didaftarkan, Silahkan login ");
-                LoginForm s = new LoginFunction();
-                s.setVisible(true);
-                conn.close();
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Gagal");
-            }
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
 
+        if(!isValidEmailAddress(email)){
+            JOptionPane.showMessageDialog(null, "Email tidak valid!");
+        } else {
+            try {
+                st = conn.createStatement();
+                rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(null, "Akun berhasil didaftarkan, Silahkan login ");
+                    LoginForm s = new LoginFunction();
+                    s.setVisible(true);
+                    conn.close();
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal");
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
         // int jawab = JOptionPane.showConfirmDialog(null, "Apakah data yang anda
         // masukkan sudah benar?");
         // // 0 : yes
@@ -93,6 +110,13 @@ public class RegisterFunction extends Register {
         s.setVisible(true);
         dispose();
     }
+
+    public static boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+     }
 
     public static void main(String[] args) {
         Register register = new RegisterFunction();
