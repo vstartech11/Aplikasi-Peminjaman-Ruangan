@@ -22,12 +22,11 @@ public class MainMethod extends MainLayout {
     }
 
     public MainMethod(String nim, String nama, String status) {
-        this.status = status;
-        this.nama = nama;
-        this.status = status;
-
         this.showNama.setText(nama);
-        if (this.status.equals("ADMIN")) {
+        this.showNim.setText(nim);
+        this.showStatus.setText(status);
+
+        if (status.equals("ADMIN")) {
             setPengelolaanVisibility(true);
         } else {
             setPengelolaanVisibility(false);
