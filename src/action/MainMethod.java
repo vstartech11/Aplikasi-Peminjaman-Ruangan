@@ -4,8 +4,11 @@ import view.LoginForm;
 import view.MainLayout;
 
 public class MainMethod extends MainLayout {
-    private String status;
-    public MainMethod(){
+    private String status = null;
+    private String nama = null;
+    private String nim = null;
+
+    public MainMethod() {
         logoutMenu.setEnabled(false);
         peminjamanMenu.setEnabled(false);
         pengelolaanMenu.setEnabled(false);
@@ -20,6 +23,10 @@ public class MainMethod extends MainLayout {
 
     public MainMethod(String nim, String nama, String status) {
         this.status = status;
+        this.nama = nama;
+        this.status = status;
+
+        this.showNama.setText(nama);
         if (this.status.equals("ADMIN")) {
             setPengelolaanVisibility(true);
         } else {

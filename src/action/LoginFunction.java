@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import view.MainLayout;
 import view.LoginForm;
-import action.Koneksi;
 
 public class LoginFunction extends LoginForm {
   Connection conn = null;
@@ -38,7 +37,7 @@ public class LoginFunction extends LoginForm {
       st = conn.createStatement();
       rs = st.executeQuery(sql);
       if (rs.next()) {
-        MainLayout s = new MainMethod(rs.getString(1),rs.getString(2),rs.getString(4));
+        MainLayout s = new MainMethod(rs.getString("nim"), rs.getString("nama"), rs.getString("status"));
         s.setVisible(true);
       } else {
         JOptionPane.showMessageDialog(null, "NIM atau Password Salah !");

@@ -273,7 +273,7 @@ public class MainLayout extends javax.swing.JFrame {
     public javax.swing.JMenuItem pengelolaanMenu;
     public javax.swing.JMenuItem rekapMenu;
     public javax.swing.JMenu ruanganMenu;
-    private javax.swing.JTextField showNama;
+    public javax.swing.JTextField showNama;
     private javax.swing.JTextField showNim;
     private javax.swing.JTextField showStatus;
     private javax.swing.JTextField showTanggal;
