@@ -23,6 +23,8 @@ public class MainMethod extends MainLayout {
         this.showNim.setText(nim);
         this.showStatus.setText(status);
 
+        loginMenu.setEnabled(false);
+
         if (status.equals("ADMIN")) {
             setPengelolaanVisibility(true);
         } else {
@@ -38,8 +40,6 @@ public class MainMethod extends MainLayout {
 
     private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
-        MainLayout mainLayout = new MainMethod();
-        mainLayout.setVisible(true);
     }
 
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
@@ -48,7 +48,7 @@ public class MainMethod extends MainLayout {
     }
 
     public static void main(String[] args) {
-        MainLayout mainLayout = new MainMethod();
+        MainLayout mainLayout = new MainMethod("dawd", "Dawd", "ADMIN");
         mainLayout.setVisible(true);
     }
 }
