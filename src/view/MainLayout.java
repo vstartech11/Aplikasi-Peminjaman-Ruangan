@@ -83,6 +83,11 @@ public class MainLayout extends javax.swing.JFrame {
         menuDashboard.add(loginMenu);
 
         logoutMenu.setText("Logout");
+        logoutMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutMenuActionPerformed(evt);
+            }
+        });
         menuDashboard.add(logoutMenu);
 
         menuBar.add(menuDashboard);
@@ -90,9 +95,19 @@ public class MainLayout extends javax.swing.JFrame {
         ruanganMenu.setText("Ruangan");
 
         peminjamanMenu.setText("Peminjaman");
+        peminjamanMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                peminjamanMenuActionPerformed(evt);
+            }
+        });
         ruanganMenu.add(peminjamanMenu);
 
         pengelolaanMenu.setText("Pengelolaan");
+        pengelolaanMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pengelolaanMenuActionPerformed(evt);
+            }
+        });
         ruanganMenu.add(pengelolaanMenu);
 
         rekapMenu.setText("Rekap");
@@ -163,6 +178,18 @@ public class MainLayout extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loginMenuActionPerformed
 
+    private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    } 
+
+    private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        // TODO add your handling code here:
+    }   
+
+    private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -202,16 +229,16 @@ public class MainLayout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem loginMenu;
+    public javax.swing.JMenuItem loginMenu;
     public javax.swing.JMenuItem logoutMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuDashboard;
     private javax.swing.JLabel namaText;
     private javax.swing.JLabel nimText;
-    private javax.swing.JMenuItem peminjamanMenu;
-    private javax.swing.JMenuItem pengelolaanMenu;
-    private javax.swing.JMenuItem rekapMenu;
-    private javax.swing.JMenu ruanganMenu;
+    public javax.swing.JMenuItem peminjamanMenu;
+    public javax.swing.JMenuItem pengelolaanMenu;
+    public javax.swing.JMenuItem rekapMenu;
+    public javax.swing.JMenu ruanganMenu;
     private javax.swing.JTextField showNama;
     private javax.swing.JTextField showNim;
     private javax.swing.JTextField showStatus;

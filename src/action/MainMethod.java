@@ -1,35 +1,29 @@
 package action;
-import view.Register;
-import view.formLogin;
+import view.LoginForm;
 import view.MainLayout;
 
 public class MainMethod extends MainLayout {
-    private String username;
 
-    public MainMethod(String username){
-        this.username = username;
-
-        System.out.println(this.username);
-        if(this.username.equals("admin")){
-            setPengelolaanVisibility(true);
-        } else {
-            setPengelolaanVisibility(false);
-        }
-        // logoutMenu.addActionListener(new java.awt.event.ActionListener() {
-        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
-            
-        //     }
-        //   });
-    }
-    
-    public void mainSetUsername(String username){
-        this.username = username;
+    public MainMethod(){
+        logoutMenu.setEnabled(false);
+        peminjamanMenu.setEnabled(false);
+        pengelolaanMenu.setEnabled(false);
+        rekapMenu.setEnabled(false);
+        
+        loginMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginMenuActionPerformed(evt);
+            }
+        });
     }
 
-    public String mainGetUsername(){
-        return this.username; 
+    private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMenuActionPerformed
+        LoginForm login = new LoginFunction();
+        login.setVisible(true);
     }
 
     public static void main(String[] args) {
+        MainLayout mainLayout = new MainMethod();
+        mainLayout.setVisible(true);
     }
 }
