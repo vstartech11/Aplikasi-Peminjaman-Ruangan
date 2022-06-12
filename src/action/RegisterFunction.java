@@ -41,41 +41,36 @@ public class RegisterFunction extends Register {
         String sql = "insert into tblUser(nim,nama,email,noTelp,password,status) values ('" + nim + "','" + nama
                 + "','" + email + "','" + noTelp + "','" + password + "','USER')";
 
-
-        int jawab = JOptionPane.showConfirmDialog(null, "Apakah data yang anda
-        masukkan sudah benar?");
+        int jawab = JOptionPane.showConfirmDialog(null, "Apakah data yang anda masukkan sudah benar?");
         // 0 : yes
         // 1 : no
         // 2: cancel
         switch (jawab) {
-        case JOptionPane.YES_OPTION:
-        String sql = "insert into tblUser(nim,nama,email,noTelp,password,status)
-        values ('" + nim + "','" + nama
-        + "','" + email + "','" + noTelp + "','" + password + "','USER')";
-        try {
-        st = conn.createStatement();
-        rows = st.executeUpdate(sql);
-        if (rows != 0) {
-            JOptionPane.showMessageDialog(null, "Akun berhasil didaftarkan, Silahkan login ");
-            LoginForm s = new LoginFunction();
-            s.setVisible(true);
-            conn.close();
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Gagal");
-        }
-        } catch (Exception e) {
-        // TODO: handle exception
-        }
+            case JOptionPane.YES_OPTION:
+                try {
+                    st = conn.createStatement();
+                    rows = st.executeUpdate(sql);
+                    if (rows != 0) {
+                        JOptionPane.showMessageDialog(null, "Akun berhasil didaftarkan, Silahkan login ");
+                        LoginForm s = new LoginFunction();
+                        s.setVisible(true);
+                        conn.close();
+                        dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gagal");
+                    }
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
 
-        // MainMethod layout = new MainMethod(this.username);
-        // layout.mainSetUsername(this.username);
-        // layout.adminOrNot();
-        // layout.setLocationRelativeTo(this);
-        // layout.setVisible(true);
-        break;
-        case JOptionPane.NO_OPTION:
-        break;
+                // MainMethod layout = new MainMethod(this.username);
+                // layout.mainSetUsername(this.username);
+                // layout.adminOrNot();
+                // layout.setLocationRelativeTo(this);
+                // layout.setVisible(true);
+                break;
+            case JOptionPane.NO_OPTION:
+                break;
         }
     }
 
