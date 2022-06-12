@@ -26,6 +26,8 @@ public class MainMethod extends MainLayout {
         this.showNim.setText(nim);
         this.showStatus.setText(status);
 
+        loginMenu.setEnabled(false);
+
         if (status.equals("ADMIN")) {
             setPengelolaanVisibility(true);
         } else {
