@@ -5,6 +5,9 @@ import view.MainLayout;
 
 public class MainMethod extends MainLayout {
     private String status;
+    private String nim;
+    private String nama;
+
     public MainMethod(){
         logoutMenu.setEnabled(false);
         peminjamanMenu.setEnabled(false);
@@ -19,7 +22,13 @@ public class MainMethod extends MainLayout {
     }
 
     public MainMethod(String nim, String nama, String status) {
+        this.nim = nim;
+        this.nama = nama;
         this.status = status;
+
+        logoutMenu.setEnabled(false);
+        peminjamanMenu.setEnabled(false);
+        rekapMenu.setEnabled(false);
         if (this.status.equals("ADMIN")) {
             setPengelolaanVisibility(true);
         } else {

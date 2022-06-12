@@ -19,16 +19,16 @@ public class Koneksi {
         }
     }
 
-    public ResultSet query() {
-        ResultSet rs = null;
-        Statement st = null;
-        int curRow = 0;
-        try {
-            st = conn.createStatement();
-            rs = st.executeQuery(sql);
-            return rs;
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-    }
+    // public ResultSet query() {
+    //     ResultSet rs = null;
+    //     Statement st = null;
+    //     int curRow = 0;
+    //     try {
+    //         st = conn.createStatement();
+    //         rs = st.executeQuery(sql);
+    //         return rs;
+    //     } catch (Exception e) {
+    //         // TODO: handle exception
+    //     }
+    // }
 }

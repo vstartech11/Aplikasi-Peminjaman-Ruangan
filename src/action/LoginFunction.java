@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import view.MainLayout;
 import view.LoginForm;
-import action.Koneksi;
 
 public class LoginFunction extends LoginForm {
   Connection conn = null;
