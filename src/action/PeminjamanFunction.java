@@ -2,6 +2,7 @@ package action;
 
 import view.PeminjamanRuanganLayout;
 import java.sql.*;
+import java.time.LocalDate;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -136,7 +137,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('"
                 + getKode()
                 + "','" + this.mainMethod.showNim + "','" + getIdRuangan(a)
-                + "','2022-06-14','SESI 1','Kelas praktikum alpro B')";
+                + "','" + LocalDate.now() + "','','Kelas praktikum alpro B')";
     }
 
     private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {

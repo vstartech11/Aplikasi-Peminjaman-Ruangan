@@ -7,6 +7,9 @@ import view.Pengelolaan;
 import view.RekapLayout;
 
 public class MainMethod extends MainLayout {
+    private String nim;
+    private String nama;
+    private String status;
 
     public MainMethod() {
         logoutMenu.setEnabled(false);
@@ -22,6 +25,9 @@ public class MainMethod extends MainLayout {
     }
 
     public MainMethod(String nim, String nama, String status) {
+        this.nim = nim;
+        this.nama = nama;
+        this.status = status;
         this.showNama.setText(nama);
         this.showNim.setText(nim);
         this.showStatus.setText(status);
@@ -48,13 +54,14 @@ public class MainMethod extends MainLayout {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pengelolaanMenuActionPerformed(evt);
             }
-    });
+        });
         rekapMenu.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            rekapMenuActionPerformed(evt);
-        }
-});
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rekapMenuActionPerformed(evt);
+            }
+        });
     }
+
     private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
     }
@@ -66,17 +73,20 @@ public class MainMethod extends MainLayout {
     }
 
     private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(new MainMethod());
+        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(new MainMethod(this.nim, this.nama, this.status));
         peminjaman.setVisible(true);
     }
+
     private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
         Pengelolaan pengelolaan = new PengelolaanFunction();
         pengelolaan.setVisible(true);
     }
+
     private void rekapMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
         RekapLayout rekapmenu = new RekapFunction();
         rekapmenu.setVisible(true);
     }
+
     public static void main(String[] args) {
         MainLayout mainLayout = new MainMethod();
         mainLayout.setVisible(true);
