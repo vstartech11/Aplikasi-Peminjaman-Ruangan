@@ -59,17 +59,29 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         }
     }
 
-    private void getKode() {
+    private String getKode() {
         String sql = "Select kodePinjam from tblPeminjaman where kodePinjam in (select max(kodePinjam) from tblPeminjaman) order by kodePinjam desc";
+        String kode = null;
         try {
             st = conn.createStatement();
             rs = st.executeQuery(sql);
             if (rs.next()) {
-
+                int co = rs.getString(1).length();
+                String num = rs.getString(1).substring(2, co);
+                int n = Integer.parseInt(num);
+                n++;
+                if (n < 10) {
+                    kode = "PJ" + "00" + Integer.toString(n);
+                } else if (n < 100) {
+                    kode = "PJ" + "0" + Integer.toString(n);
+                } else if (n < 1000) {
+                    kode = "PJ" + Integer.toString(n);
+                }
             }
         } catch (Exception e) {
             // TODO: handle exception
         }
+        return kode;
     }
 
     private void getGedung() {
@@ -99,7 +111,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+        System.out.println(getKode());
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,18 +121,19 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
                 + "','11211024','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
     }
 
-    private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {                                             
+    private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {
         getRuang();
-        // this.namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-    }      
-    
-    private void namaRuanganInputItemStateChanged(java.awt.event.ItemEvent evt) {                                             
-        if(namaRuanganInput.getSelectedItem().equals("Item 1")){
+        // this.namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new
+        // String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+    }
+
+    private void namaRuanganInputItemStateChanged(java.awt.event.ItemEvent evt) {
+        if (namaRuanganInput.getSelectedItem().equals("Item 1")) {
             this.showKeterangan.setText("a");
-        } else if (namaRuanganInput.getSelectedItem().equals("Item 2")){
+        } else if (namaRuanganInput.getSelectedItem().equals("Item 2")) {
             this.showKeterangan.setText("b");
         }
-    }    
+    }
 
     public static void main(String[] args) {
         PeminjamanRuanganLayout peminjaman = new PeminjamanFunction();

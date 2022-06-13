@@ -69,8 +69,9 @@ public class PengelolaanFunction extends Pengelolaan {
 
     private void getTable() {
         DefaultTableModel dm = (DefaultTableModel) tabelPengelolaan.getModel();
-        dm.getDataVector().removeAllElements();
-        dm.fireTableDataChanged();
+        while (dm.getRowCount() > 0) {
+            dm.removeRow(0);
+        }
         String[] judul = { "Kode Peminjaman", "NIM", "Nama Ruangan", "Tanggal Pinjam", "Sesi",
                 "Keterangan Peminjaman" };
         model = new DefaultTableModel(judul, 0);
@@ -137,7 +138,6 @@ public class PengelolaanFunction extends Pengelolaan {
         if (hapus == true) { // fungsi untuk menghapus peminjaman ruangan dari sisi admin
             hapusData();
             JOptionPane.showMessageDialog(null, "Data telah dihapus");
-            this.dispose();
 
         } else if (edit == true) {
             jPanel9.setVisible(false);
@@ -156,7 +156,6 @@ public class PengelolaanFunction extends Pengelolaan {
                 hapusRadioButton2.setSelected(false);
                 kodeInput2.setText(null);
                 getTable();
-                this.dispose();
                 Pengelolaan kelola = new PengelolaanFunction();
                 kelola.setVisible(true);
             }
@@ -171,12 +170,14 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if(namaRuanganInput.getText().equals("") || tanggalPinjamInput.getText().equals("") || sesiInput.getText().equals("") || isRadioButtonSelected() == false || ketPeminjamanInputArea.getText().isEmpty()){
+        if (namaRuanganInput.getText().equals("") || tanggalPinjamInput.getText().equals("")
+                || sesiInput.getText().equals("") || isRadioButtonSelected() == false
+                || ketPeminjamanInputArea.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "gagal");
         } else {
-            //database di sini
+            // database di sini
 
-            //ini fungsi lain
+            // ini fungsi lain
             namaRuanganInput.setText("");
             tanggalPinjamInput.setText("");
             sesiInput.setText("");
@@ -189,8 +190,8 @@ public class PengelolaanFunction extends Pengelolaan {
         }
     }
 
-    private boolean isRadioButtonSelected(){
-        if(this.editRadioButton2.isSelected() || this.hapusRadioButton2.isSelected()){
+    private boolean isRadioButtonSelected() {
+        if (this.editRadioButton2.isSelected() || this.hapusRadioButton2.isSelected()) {
             return true;
         }
         return false;
