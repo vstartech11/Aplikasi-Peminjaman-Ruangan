@@ -32,9 +32,8 @@ public class PengelolaanFunction extends Pengelolaan {
         this.mainMethod = mainMethod;
         conn = Koneksi.koneksi();
         getTable();
-        jPanel9.setVisible(true);
-        jPanel2.setVisible(true);
-        System.out.println(tabelPengelolaan.getRowCount());
+        jPanel9.setVisible(false);
+        jPanel2.setVisible(false);
 
         // for (int i = 0; i < tabelPengelolaan.getRowCount(); i++) {
         // listkode.add(tabelPengelolaan.getValueAt(i, 0));
@@ -119,18 +118,6 @@ public class PengelolaanFunction extends Pengelolaan {
                 // TODO: handle exception
             }
         }
-        // String kode = kodeInput2.getText();
-        // System.out.println(kode);
-        // for (int i = 0; i < listkode.size(); i++) {
-        // if (kode.equals(listkode.get(i))) {
-        // System.out.println("Berhasil mas");
-        // baristeerpilih = i;
-        // jPanel9.setVisible(true);
-        // break;
-        // } else {
-
-        // }
-        // }
     }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,8 +125,6 @@ public class PengelolaanFunction extends Pengelolaan {
         boolean edit = editRadioButton2.isSelected();
         if (hapus == true) { // fungsi untuk menghapus peminjaman ruangan dari sisi admin
             hapusData();
-            JOptionPane.showMessageDialog(null, "Data telah dihapus");
-
         } else if (edit == true) {
             jPanel9.setVisible(false);
             jPanel2.setVisible(true);
@@ -148,18 +133,17 @@ public class PengelolaanFunction extends Pengelolaan {
 
     private void hapusData() {
         String sql = "delete from tblPeminjaman where kodePinjam='" + kodeInput2.getText() + "'";
-
         try {
             st = conn.createStatement();
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
+            int row = st.executeUpdate(sql);
+            if (row != 0) {
                 JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
                 hapusRadioButton2.setSelected(false);
                 kodeInput2.setText(null);
-                getTable();
                 Pengelolaan kelola = new PengelolaanFunction(new MainMethod(this.mainMethod.getNIM(),
                         this.mainMethod.getNama(), this.mainMethod.getStatus()));
                 kelola.setVisible(true);
+                this.dispose();
             }
         } catch (Exception e) {
             // TODO: handle exception
@@ -206,10 +190,5 @@ public class PengelolaanFunction extends Pengelolaan {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
         jPanel2.setVisible(false);
         kodeInput2.setText("");
-    }
-
-    public static void main(String[] args) {
-        Pengelolaan pengelolaan = new PengelolaanFunction(new MainMethod("11211032", "1234", "ADMIN"));
-        pengelolaan.setVisible(true);
     }
 }
