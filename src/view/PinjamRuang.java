@@ -91,11 +91,11 @@ public class PinjamRuang extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
 
-        // panelBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Peminjaman Ruangan ITK");
-        //panelBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 50, 560, -1));
+        panelBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 50, 560, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

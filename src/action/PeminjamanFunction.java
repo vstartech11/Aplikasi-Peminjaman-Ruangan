@@ -59,6 +59,19 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         }
     }
 
+    private void getKode() {
+        String sql = "Select kodePinjam from tblPeminjaman where kodePinjam in (select max(kodePinjam) from tblPeminjaman) order by kodePinjam desc";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
     private void getGedung() {
         String[] list = { "NONE", "E", "F", "G" };
         DefaultComboBoxModel comboG = new DefaultComboBoxModel<String>(list);

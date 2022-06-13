@@ -68,6 +68,9 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void getTable() {
+        DefaultTableModel dm = (DefaultTableModel) tabelPengelolaan.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
         String[] judul = { "Kode Peminjaman", "NIM", "Nama Ruangan", "Tanggal Pinjam", "Sesi",
                 "Keterangan Peminjaman" };
         model = new DefaultTableModel(judul, 0);
@@ -96,7 +99,8 @@ public class PengelolaanFunction extends Pengelolaan {
         if (kodeInput2.getText().equals(null)) {
             JOptionPane.showMessageDialog(null, "Kolom Kode Pinjam Tidak Boleh Kosong !");
         } else {
-            String sql = "select tblPeminjaman.kodePinjam, tblPeminjaman.nim, tblRuangan.namaRuangan, tblPeminjaman.tglPinjam, tblPeminjaman.ketSesi, tblPeminjaman.ketPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan where tblPeminjaman.kodePinjam='" + kodeInput2.getText() + "'";
+            String sql = "select tblPeminjaman.kodePinjam, tblPeminjaman.nim, tblRuangan.namaRuangan, tblPeminjaman.tglPinjam, tblPeminjaman.ketSesi, tblPeminjaman.ketPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan where tblPeminjaman.kodePinjam='"
+                    + kodeInput2.getText() + "'";
             try {
                 st = conn.createStatement();
                 rs = st.executeQuery(sql);
@@ -131,12 +135,29 @@ public class PengelolaanFunction extends Pengelolaan {
         boolean hapus = hapusRadioButton2.isSelected();
         boolean edit = editRadioButton2.isSelected();
         if (hapus == true) { // fungsi untuk menghapus peminjaman ruangan dari sisi admin
+            hapusData();
+            JOptionPane.showMessageDialog(null, "Data telah dihapus");
 
-            jPanel9.setVisible(false);
-            model.removeRow(baristeerpilih);
         } else if (edit == true) {
             jPanel9.setVisible(false);
             jPanel2.setVisible(true);
+        }
+    }
+
+    private void hapusData() {
+        String sql = "delete from tblPeminjaman where kodePinjam='" + kodeInput2.getText() + "'";
+
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
+                hapusRadioButton2.setSelected(false);
+                kodeInput2.setText(null);
+                getTable();
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
         }
     }
 
