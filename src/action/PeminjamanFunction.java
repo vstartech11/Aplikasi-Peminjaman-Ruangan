@@ -2,6 +2,8 @@ package action;
 
 import view.PeminjamanRuanganLayout;
 import java.sql.*;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.*;
 
 public class PeminjamanFunction extends PeminjamanRuanganLayout {
@@ -14,11 +16,18 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     public PeminjamanFunction() {
         conn = Koneksi.koneksi();
         getTabel();
+        getGedung();
         this.backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
+    }
+
+    private void getGedung() {
+        String[] list = { "E", "F", "G", "LAB" };
+        DefaultComboBoxModel comboG = new DefaultComboBoxModel<String>(list);
+        gedungInput.setModel(comboG);
     }
 
     private void getTabel() {
