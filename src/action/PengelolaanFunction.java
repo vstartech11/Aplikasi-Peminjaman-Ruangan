@@ -18,7 +18,7 @@ import java.sql.*;
  * @author USER
  */
 public class PengelolaanFunction extends Pengelolaan {
-    List<String>listkode = new ArrayList<String>();
+    List<String> listkode = new ArrayList<String>();
     DefaultTableModel model;
     private MainMethod mainMethod;
     Connection conn = null;
@@ -155,7 +155,8 @@ public class PengelolaanFunction extends Pengelolaan {
                 hapusRadioButton2.setSelected(false);
                 kodeInput2.setText(null);
                 getTable();
-                Pengelolaan kelola = new PengelolaanFunction(new MainMethod(this.mainMethod.getNIM(), this.mainMethod.getNama(), this.mainMethod.getStatus()));
+                Pengelolaan kelola = new PengelolaanFunction(new MainMethod(this.mainMethod.getNIM(),
+                        this.mainMethod.getNama(), this.mainMethod.getStatus()));
                 kelola.setVisible(true);
             }
         } catch (Exception e) {
@@ -175,6 +176,13 @@ public class PengelolaanFunction extends Pengelolaan {
             JOptionPane.showMessageDialog(null, "gagal");
         } else {
             // database di sini
+            String sql = "update tblPeminjaman set ";
+            try {
+                st = conn.createStatement();
+                int row = st.executeUpdate(sql);
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
 
             // ini fungsi lain
             namaRuanganInput.setText("");
