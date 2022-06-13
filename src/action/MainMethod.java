@@ -3,7 +3,8 @@ package action;
 import view.LoginForm;
 import view.MainLayout;
 import view.PeminjamanRuanganLayout;
-
+import view.Pengelolaan;
+import view.RekapLayout;
 
 public class MainMethod extends MainLayout {
 
@@ -43,8 +44,17 @@ public class MainMethod extends MainLayout {
                 peminjamanMenuActionPerformed(evt);
             }
         });
+        pengelolaanMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pengelolaanMenuActionPerformed(evt);
+            }
+    });
+        rekapMenu.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            rekapMenuActionPerformed(evt);
+        }
+});
     }
-
     private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
     }
@@ -59,7 +69,14 @@ public class MainMethod extends MainLayout {
         PeminjamanRuanganLayout peminjaman = new PeminjamanFunction();
         peminjaman.setVisible(true);
     }
-
+    private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
+        Pengelolaan pengelolaan = new PengelolaanFunction();
+        pengelolaan.setVisible(true);
+    }
+    private void rekapMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
+        RekapLayout rekapmenu = new RekapFunction();
+        rekapmenu.setVisible(true);
+    }
     public static void main(String[] args) {
         MainLayout mainLayout = new MainMethod();
         mainLayout.setVisible(true);
