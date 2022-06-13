@@ -96,12 +96,16 @@ public class PengelolaanFunction extends Pengelolaan {
         if (kodeInput2.getText().equals(null)) {
             JOptionPane.showMessageDialog(null, "Kolom Kode Pinjam Tidak Boleh Kosong !");
         } else {
-            String sql = "select * from tblPeminjaman where kodePinjam='" + kodeInput2.getText() + "'";
+            String sql = "select tblPeminjaman.kodePinjam, tblPeminjaman.nim, tblRuangan.namaRuangan, tblPeminjaman.tglPinjam, tblPeminjaman.ketSesi, tblPeminjaman.ketPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan where tblPeminjaman.kodePinjam='" + kodeInput2.getText() + "'";
             try {
                 st = conn.createStatement();
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Data ditemukan");
+                    namaRuanganInput.setText(rs.getString(3));
+                    tanggalPinjamInput.setText(rs.getString(4));
+                    sesiInput.setText(rs.getString(5));
+                    ketPeminjamanInputArea.setText(rs.getString(6));
                     jPanel9.setVisible(true);
                 } else
                     JOptionPane.showMessageDialog(null, "Data tidak ditemukan");
@@ -142,11 +146,11 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String idRuangan = namaRuanganInput.getText();
+        String namaRuangan = namaRuanganInput.getText();
         String tanggalPinjam = tanggalPinjamInput.getText();
         String ketPeminjaman = ketPeminjamanInputArea.getText();
         String sesi = sesiInput.getText();
-        model.setValueAt(idRuangan, baristeerpilih, 3);
+        model.setValueAt(namaRuangan, baristeerpilih, 3);
         model.setValueAt(tanggalPinjam, baristeerpilih, 4);
         model.setValueAt(sesi, baristeerpilih, 5);
         model.setValueAt(ketPeminjaman, baristeerpilih, 6);
