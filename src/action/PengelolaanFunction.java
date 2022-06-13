@@ -64,9 +64,9 @@ public class PengelolaanFunction extends Pengelolaan {
             }
         });
         backButton.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        backButtonActionPerformed(evt);
-                }
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
         });
     }
 
@@ -162,7 +162,7 @@ public class PengelolaanFunction extends Pengelolaan {
             JOptionPane.showMessageDialog(null, "gagal");
         } else {
             // database di sini
-            String sql = "update tblPeminjaman set ";
+            String sql = "update tblPeminjaman set idRuangan='"++"'";
             try {
                 st = conn.createStatement();
                 int row = st.executeUpdate(sql);
@@ -195,7 +195,7 @@ public class PengelolaanFunction extends Pengelolaan {
         kodeInput2.setText("");
     }
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         this.mainMethod.setVisible(true);
         this.dispose();
     }

@@ -56,9 +56,8 @@ public class RekapFunction extends RekapLayout {
     tableContent.setModel(model);
     String sql = "select tblPeminjaman.kodePinjam,tblUser.nama,tblRuangan.namaRuangan,tblFasilitas.namaFasilitas,tblPeminjaman.ketSesi,tblPeminjaman.tglPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan join tblFasilitas on tblRuangan.idFasilitas=tblFasilitas.idFasilitas join tblUser on tblPeminjaman.nim=tblUser.nim where tblPeminjaman.kodepinjam = '"
         + kolomCariInput.getText() + "' or tblUser.nama = '" + kolomCariInput.getText()
-        + "' or tblRuangan.namaRuangan = '" + kolomCariInput.getText() + "' or tblFasilitas.namaFasilitas = '"
-        + kolomCariInput.getText() + "' or tblPeminjaman.ketSesi = '" + kolomCariInput.getText()
-        + "'";
+        + "%' or tblRuangan.namaRuangan = '" + kolomCariInput.getText() + "' or tblFasilitas.namaFasilitas = '"
+        + kolomCariInput.getText() + "'";
     try {
       st = conn.createStatement();
       rs = st.executeQuery(sql);
