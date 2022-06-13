@@ -63,7 +63,11 @@ public class PengelolaanFunction extends Pengelolaan {
                 cancelButtonActionPerformed(evt);
             }
         });
-
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        backButtonActionPerformed(evt);
+                }
+        });
     }
 
     private void getTable() {
@@ -189,5 +193,10 @@ public class PengelolaanFunction extends Pengelolaan {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
         jPanel2.setVisible(false);
         kodeInput2.setText("");
+    }
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        this.mainMethod.setVisible(true);
+        this.dispose();
     }
 }
