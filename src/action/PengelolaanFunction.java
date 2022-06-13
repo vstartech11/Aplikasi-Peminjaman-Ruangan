@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 // import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-
 import view.Pengelolaan;
 import java.sql.*;
 
@@ -20,9 +18,8 @@ import java.sql.*;
  * @author USER
  */
 public class PengelolaanFunction extends Pengelolaan {
-    List listkode = new ArrayList<String>();
+    List<String> listkode = new ArrayList<String>();
     DefaultTableModel model;
-    private int baristeerpilih;
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
