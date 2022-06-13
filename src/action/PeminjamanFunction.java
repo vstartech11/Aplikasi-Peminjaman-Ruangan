@@ -71,9 +71,9 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
             if (rs.next()) {
                 String[] list = {};
                 List<String> a = new ArrayList<String>(Arrays.asList(list));
-                for (int i = 1; i <= 4; i++){
+                for (int i = 1; i <= 4; i++) {
                     if (rs.getString(i).equals("TERSEDIA")) {
-                        a.add(rs.getString(i));
+                        a.add("SESI " + i);
                     }
                 }
                 list = a.toArray(list);
@@ -151,6 +151,20 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         return id;
     }
 
+    private void getFasil() {
+        String sql = "select ketRuangan from tblFasilitas join tblRuangan on tblFasilitas.idFasilitas=tblRuangan.idFasilitas where tblRuangan.idRuangan='"
+                + getIdRuangan(namaRuanganInput.getSelectedItem().toString()) + "'";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                showKeterangan.setText(rs.getString(1));
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         System.out.println(getIdRuangan("G102"));
         this.mainMethod.setVisible(true);
@@ -162,11 +176,14 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('"
                 + getKode()
                 + "','" + this.mainMethod.showNim + "','" + getIdRuangan(a)
-                + "','" + LocalDate.now() + "','','Kelas praktikum alpro B')";
+                + "','" + LocalDate.now() + "','" + sesiInput.getSelectedItem().toString() + "','"
+                + showKeterangan.getText() + "')";
     }
 
     private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {
         getRuang();
+        getKet();
+        getFasil();
         // this.namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new
         // String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
     }
