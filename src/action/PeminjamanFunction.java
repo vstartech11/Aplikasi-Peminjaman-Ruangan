@@ -79,7 +79,10 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('PJ003','11211024','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
+        string sql = "select ";
+
+        String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('" + kode
+                + "','11211024','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
     }
 
     public static void main(String[] args) {
