@@ -120,11 +120,13 @@ public class PengelolaanFunction extends Pengelolaan {
                 st = conn.createStatement();
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
+
                     JOptionPane.showMessageDialog(null, "Data ditemukan");
                     namaRuanganInput.addItem(rs.getString(3));
                     namaRuanganInput.setSelectedItem(rs.getString(3));
                     final java.sql.Date dateNew = java.sql.Date.valueOf(rs.getString(4));
                     tanggalPinjamInput.setDate(dateNew);
+                    sesiInput.addItem(rs.getString(5));
                     sesiInput.setSelectedItem(rs.getString(5));
                     ketPeminjamanInputArea.setText(rs.getString(6));
                     jPanel9.setVisible(true);
@@ -178,10 +180,9 @@ public class PengelolaanFunction extends Pengelolaan {
             JOptionPane.showMessageDialog(null, "gagal");
         } else {
             // database di sini
-            String sql = "update tblPeminjaman set idRuangan='"
-                    + getIdRuangan(namaRuanganInput.getSelectedItem().toString()) + "',tglPinjam='"
-                    + tanggalPinjamInput.getDate().toString() + "',ketSesi='" + sesiInput.getSelectedItem().toString()
-                    + "',ketPinjam='" + ketPeminjamanInputArea.getText() + "' where kodePinjam='"
+            String sql = "update tblPeminjaman set tglPinjam='"
+                    + tanggalPinjamInput.getDate().toString() + "',ketPinjam='" + ketPeminjamanInputArea.getText()
+                    + "' where kodePinjam='"
                     + kodeInput2.getText() + "'";
             try {
                 st = conn.createStatement();
