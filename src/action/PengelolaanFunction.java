@@ -32,8 +32,8 @@ public class PengelolaanFunction extends Pengelolaan {
     public PengelolaanFunction() {
         conn = Koneksi.koneksi();
         getTable();
-        jPanel9.setVisible(true);
-        jPanel2.setVisible(true);
+        jPanel9.setVisible(false);
+        jPanel2.setVisible(false);
         System.out.println(tabelPengelolaan.getRowCount());
 
         // for (int i = 0; i < tabelPengelolaan.getRowCount(); i++) {
@@ -137,6 +137,7 @@ public class PengelolaanFunction extends Pengelolaan {
         if (hapus == true) { // fungsi untuk menghapus peminjaman ruangan dari sisi admin
             hapusData();
             JOptionPane.showMessageDialog(null, "Data telah dihapus");
+            this.dispose();
 
         } else if (edit == true) {
             jPanel9.setVisible(false);
@@ -155,6 +156,9 @@ public class PengelolaanFunction extends Pengelolaan {
                 hapusRadioButton2.setSelected(false);
                 kodeInput2.setText(null);
                 getTable();
+                this.dispose();
+                Pengelolaan kelola = new PengelolaanFunction();
+                kelola.setVisible(true);
             }
         } catch (Exception e) {
             // TODO: handle exception
