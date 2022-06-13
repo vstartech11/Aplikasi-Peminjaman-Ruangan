@@ -127,7 +127,7 @@ public class RekapLayout extends javax.swing.JFrame {
     private javax.swing.JButton cariButton;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tableContent;
-    private javax.swing.JButton kembaliButton;
+    protected javax.swing.JButton kembaliButton;
     private javax.swing.JTextField kolomCariInput;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 // import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-
 import view.Pengelolaan;
 import java.sql.*;
 
@@ -20,16 +18,17 @@ import java.sql.*;
  * @author USER
  */
 public class PengelolaanFunction extends Pengelolaan {
-    List listkode = new ArrayList<String>();
+    List<String>listkode = new ArrayList<String>();
     DefaultTableModel model;
-    private int baristeerpilih;
+    private MainMethod mainMethod;
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
     Statement st = null;
     int rows = 0;
 
-    public PengelolaanFunction() {
+    public PengelolaanFunction(MainMethod mainMethod) {
+        this.mainMethod = mainMethod;
         conn = Koneksi.koneksi();
         getTable();
         jPanel9.setVisible(false);
@@ -156,7 +155,7 @@ public class PengelolaanFunction extends Pengelolaan {
                 hapusRadioButton2.setSelected(false);
                 kodeInput2.setText(null);
                 getTable();
-                Pengelolaan kelola = new PengelolaanFunction();
+                Pengelolaan kelola = new PengelolaanFunction(new MainMethod(this.mainMethod.getNIM(), this.mainMethod.getNama(), this.mainMethod.getStatus()));
                 kelola.setVisible(true);
             }
         } catch (Exception e) {
@@ -165,8 +164,8 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        jPanel9.setVisible(false);
-        kodeInput2.setText("");
+        this.mainMethod.setVisible(true);
+        this.dispose();
     }
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,10 +198,5 @@ public class PengelolaanFunction extends Pengelolaan {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
         jPanel2.setVisible(false);
         kodeInput2.setText("");
-    }
-
-    public static void main(String[] args) {
-        Pengelolaan kelola = new PengelolaanFunction();
-        kelola.setVisible(true);
     }
 }
