@@ -112,15 +112,31 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         }
     }
 
+    private String getIdRuangan(String a) {
+        String id = null;
+        String sql = "select idRuangan from tblRuangan where namaRuangan='" + a + "'";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                id = rs.getString(1);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return id;
+    }
+
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println(getKode());
+        System.out.println(getIdRuangan("G102"));
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String sql = "select ";
-
-        String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('" + kode
-                + "','" + this.mainMethod.showNim + "','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
+        String a = namaRuanganInput.getSelectedItem().toString();
+        String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('"
+                + getKode()
+                + "','" + this.mainMethod.showNim + "','" + getIdRuangan(a)
+                + "','2022-06-14','SESI 1','Kelas praktikum alpro B')";
     }
 
     private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {
@@ -137,8 +153,4 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         }
     }
 
-    public static void main(String[] args) {
-        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction();
-        peminjaman.setVisible(true);
-    }
 }
