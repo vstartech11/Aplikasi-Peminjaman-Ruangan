@@ -10,9 +10,22 @@ public class RekapFunction extends RekapLayout {
   ResultSet rs = null;
   Statement st = null;
   int rows = 0;
+  private MainMethod mainMethod;
 
-  public RekapFunction() {
+  public RekapFunction(MainMethod mainMethod) {
     conn = Koneksi.koneksi();
+    this.mainMethod = mainMethod;
+
+    this.kembaliButton.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+          kembaliButtonActionPerformed(evt);
+      }
+    });
+  }
+
+  private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    this.mainMethod.setVisible(true);
+    this.dispose();
   }
 
   private void getTabel() {

@@ -78,12 +78,12 @@ public class MainMethod extends MainLayout {
     }
 
     private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        Pengelolaan pengelolaan = new PengelolaanFunction();
+        Pengelolaan pengelolaan = new PengelolaanFunction(new MainMethod(this.nim, this.nama, this.status));
         pengelolaan.setVisible(true);
     }
 
     private void rekapMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        RekapLayout rekapmenu = new RekapFunction();
+        RekapLayout rekapmenu = new RekapFunction(new MainMethod(this.nim, this.nama, this.status));
         rekapmenu.setVisible(true);
     }
 
