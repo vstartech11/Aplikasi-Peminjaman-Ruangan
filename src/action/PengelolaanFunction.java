@@ -106,7 +106,7 @@ public class PengelolaanFunction extends Pengelolaan {
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Data ditemukan");
-                    namaRuanganInput.setText(rs.getString(3));
+                    namaRuanganInput.setSelectedItem(rs.getString(3));
                     final java.sql.Date dateNew = java.sql.Date.valueOf(rs.getString(4));
                     tanggalPinjamInput.setDate(dateNew);
                     sesiInput.setSelectedItem(rs.getString(5));
@@ -156,7 +156,7 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if (namaRuanganInput.getText().equals("") || tanggalPinjamInput.getDate().equals("")
+        if (namaRuanganInput.getSelectedItem().equals("") || tanggalPinjamInput.getDate().equals("")
                 || sesiInput.getSelectedItem().equals("") || isRadioButtonSelected() == false
                 || ketPeminjamanInputArea.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "gagal");
@@ -174,7 +174,6 @@ public class PengelolaanFunction extends Pengelolaan {
             }
 
             // ini fungsi lain
-            namaRuanganInput.setText("");
             editRadioButton2.setSelected(false);
             hapusRadioButton2.setSelected(false);
             ketPeminjamanInputArea.setText("");
