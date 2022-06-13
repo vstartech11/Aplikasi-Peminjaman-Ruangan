@@ -98,7 +98,7 @@ public class PeminjamanRuanganLayout extends javax.swing.JFrame {
         gedungText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         gedungText.setText("Gedung           :");
 
-        namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         namaRuanganInput.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 namaRuanganInputItemStateChanged(evt);

@@ -26,6 +26,18 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
                 backButtonActionPerformed(evt);
             }
         });
+
+        this.gedungInput.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                gedungInputItemStateChanged(evt);
+            }
+        });
+
+        this.namaRuanganInput.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                namaRuanganInputItemStateChanged(evt);
+            }
+        });
     }
 
     private void getRuang() {
@@ -74,7 +86,6 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        getRuang();
 
     }
 
@@ -83,6 +94,19 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         String namaRuangan = namaRuanganInput.getSelectedItem().toString();
         String sesi = sesiInput.getSelectedItem().toString();
     }
+
+    private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {                                             
+        getRuang();
+        // this.namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+    }      
+    
+    private void namaRuanganInputItemStateChanged(java.awt.event.ItemEvent evt) {                                             
+        if(namaRuanganInput.getSelectedItem().equals("Item 1")){
+            this.showKeterangan.setText("a");
+        } else if (namaRuanganInput.getSelectedItem().equals("Item 2")){
+            this.showKeterangan.setText("b");
+        }
+    }    
 
     public static void main(String[] args) {
         PeminjamanRuanganLayout peminjaman = new PeminjamanFunction();
