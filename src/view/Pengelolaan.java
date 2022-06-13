@@ -40,7 +40,7 @@ public class Pengelolaan extends javax.swing.JFrame {
                 okButton2 = new javax.swing.JButton();
                 kembaliButton2 = new javax.swing.JButton();
                 jPanel2 = new javax.swing.JPanel();
-                namaRuanganInput = new javax.swing.JTextField();
+                namaRuanganInput = new javax.swing.JComboBox<>();
                 jLabel3 = new javax.swing.JLabel();
                 jLabel4 = new javax.swing.JLabel();
                 tanggalPinjamInput = new com.toedter.calendar.JDateChooser();
@@ -387,7 +387,7 @@ public class Pengelolaan extends javax.swing.JFrame {
         protected javax.swing.JButton kembaliButton2;
         protected javax.swing.JTextArea ketPeminjamanInputArea;
         protected javax.swing.JTextField kodeInput2;
-        protected javax.swing.JTextField namaRuanganInput;
+        protected javax.swing.JComboBox<String> namaRuanganInput;
         protected javax.swing.JButton okButton2;
         protected javax.swing.JComboBox<String> sesiInput;
         protected javax.swing.JButton simpanButton;
