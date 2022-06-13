@@ -48,7 +48,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     private void getGedung() {
-        String[] list = { "E", "F", "G", "LAB" };
+        String[] list = { "NONE", "E", "F", "G" };
         DefaultComboBoxModel comboG = new DefaultComboBoxModel<String>(list);
         gedungInput.setModel(comboG);
     }
@@ -79,9 +79,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String gedung = gedungInput.getSelectedItem().toString();
-        String namaRuangan = namaRuanganInput.getSelectedItem().toString();
-        String sesi = sesiInput.getSelectedItem().toString();
+        String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('PJ003','11211024','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
     }
 
     public static void main(String[] args) {
