@@ -32,8 +32,8 @@ public class PengelolaanFunction extends Pengelolaan {
     public PengelolaanFunction() {
         conn = Koneksi.koneksi();
         getTable();
-        jPanel9.setVisible(false);
-        jPanel2.setVisible(false);
+        jPanel9.setVisible(true);
+        jPanel2.setVisible(true);
         System.out.println(tabelPengelolaan.getRowCount());
 
         // for (int i = 0; i < tabelPengelolaan.getRowCount(); i++) {
@@ -146,19 +146,29 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String namaRuangan = namaRuanganInput.getText();
-        String tanggalPinjam = tanggalPinjamInput.getText();
-        String ketPeminjaman = ketPeminjamanInputArea.getText();
-        String sesi = sesiInput.getText();
-        model.setValueAt(namaRuangan, baristeerpilih, 3);
-        model.setValueAt(tanggalPinjam, baristeerpilih, 4);
-        model.setValueAt(sesi, baristeerpilih, 5);
-        model.setValueAt(ketPeminjaman, baristeerpilih, 6);
-        jPanel2.setVisible(false);
-        namaRuanganInput.setText("");
-        tanggalPinjamInput.setText("");
-        sesiInput.setText("");
-        kodeInput2.setText("");
+        if(namaRuanganInput.getText().equals("") || tanggalPinjamInput.getText().equals("") || sesiInput.getText().equals("") || isRadioButtonSelected() == false || ketPeminjamanInputArea.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "gagal");
+        } else {
+            //database di sini
+
+            //ini fungsi lain
+            namaRuanganInput.setText("");
+            tanggalPinjamInput.setText("");
+            sesiInput.setText("");
+            editRadioButton2.setSelected(false);
+            hapusRadioButton2.setSelected(false);
+            ketPeminjamanInputArea.setText("");
+            jPanel2.setVisible(false);
+            jPanel9.setVisible(false);
+
+        }
+    }
+
+    private boolean isRadioButtonSelected(){
+        if(this.editRadioButton2.isSelected() || this.hapusRadioButton2.isSelected()){
+            return true;
+        }
+        return false;
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
