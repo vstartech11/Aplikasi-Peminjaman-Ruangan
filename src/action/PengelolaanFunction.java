@@ -131,15 +131,31 @@ public class PengelolaanFunction extends Pengelolaan {
         boolean hapus = hapusRadioButton2.isSelected();
         boolean edit = editRadioButton2.isSelected();
         if (hapus == true) { // fungsi untuk menghapus peminjaman ruangan dari sisi admin
+            hapusData();
+            JOptionPane.showMessageDialog(null,"Data telah dihapus");
+            
 
-            jPanel9.setVisible(false);
-            model.removeRow(baristeerpilih);
         } else if (edit == true) {
             jPanel9.setVisible(false);
             jPanel2.setVisible(true);
         }
     }
+    private void hapusData(){
+        String sql = "delete from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan where tblPeminjaman.kodePinjam='" + kodeInput2.getText()+"'";
+        String sql1= "select tblPeminjaman.kodePinjam, tblPeminjaman.nim, tblRuangan.namaRuangan, tblPeminjaman.tglPinjam, tblPeminjaman.ketSesi, tblPeminjaman.ketPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan";
 
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            rs = st.executeQuery(sql1);
+            while (rs.next()) {
+                model.addRow(new String[] { rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6) });
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
     private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {
         jPanel9.setVisible(false);
         kodeInput2.setText("");
