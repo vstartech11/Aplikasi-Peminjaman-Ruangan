@@ -69,9 +69,16 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
             st = conn.createStatement();
             rs = st.executeQuery(sql);
             if (rs.next()) {
-                if (rs.getString(1).equals("TERSEDIA")) {
-
+                String[] list = {};
+                List<String> a = new ArrayList<String>(Arrays.asList(list));
+                for (int i = 1; i <= 4; i++){
+                    if (rs.getString(i).equals("TERSEDIA")) {
+                        a.add(rs.getString(i));
+                    }
                 }
+                list = a.toArray(list);
+                DefaultComboBoxModel modelKeteranganSesi = new DefaultComboBoxModel<String>(list);
+                sesiInput.setModel(modelKeteranganSesi);
             }
         } catch (Exception e) {
             // TODO: handle exception
