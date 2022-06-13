@@ -5,7 +5,6 @@ import java.sql.*;
 import java.time.LocalDate;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import javax.swing.table.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,7 +54,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
                 i.add(rs.getString(1));
             }
             list = i.toArray(list);
-            DefaultComboBoxModel comboR = new DefaultComboBoxModel<String>(list);
+            DefaultComboBoxModel<String> comboR = new DefaultComboBoxModel<String>(list);
             namaRuanganInput.setModel(comboR);
         } catch (Exception e) {
             // TODO: handle exception
@@ -77,7 +76,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
                     }
                 }
                 list = a.toArray(list);
-                DefaultComboBoxModel modelKeteranganSesi = new DefaultComboBoxModel<String>(list);
+                DefaultComboBoxModel<String> modelKeteranganSesi = new DefaultComboBoxModel<String>(list);
                 sesiInput.setModel(modelKeteranganSesi);
             }
         } catch (Exception e) {
@@ -112,7 +111,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
 
     private void getGedung() {
         String[] list = { "NONE", "E", "F", "G" };
-        DefaultComboBoxModel comboG = new DefaultComboBoxModel<String>(list);
+        DefaultComboBoxModel<String> comboG = new DefaultComboBoxModel<String>(list);
         gedungInput.setModel(comboG);
     }
 
