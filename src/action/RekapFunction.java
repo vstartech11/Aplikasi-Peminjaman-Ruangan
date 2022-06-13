@@ -28,6 +28,12 @@ public class RekapFunction extends RekapLayout {
         cariButtonActionPerformed(evt);
       }
     });
+
+    this.showAllButton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            showAllButtonActionPerformed(evt);
+        }
+    });
   }
 
   private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -38,6 +44,10 @@ public class RekapFunction extends RekapLayout {
   private void cariButtonActionPerformed(java.awt.event.ActionEvent evt) {
     getCari();
   }
+  
+  private void showAllButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    // TODO add your handling code here:
+  }   
 
   private void getCari() {
     String[] judul = { "Kode Peminjaman", "Nama", "Nama Ruangan", "Fasilitas", "Sesi Pinjam",
