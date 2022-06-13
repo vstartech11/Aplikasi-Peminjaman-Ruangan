@@ -30,9 +30,9 @@ public class RekapFunction extends RekapLayout {
     });
 
     this.showAllButton.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            showAllButtonActionPerformed(evt);
-        }
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        showAllButtonActionPerformed(evt);
+      }
     });
   }
 
@@ -44,10 +44,10 @@ public class RekapFunction extends RekapLayout {
   private void cariButtonActionPerformed(java.awt.event.ActionEvent evt) {
     getCari();
   }
-  
-  private void showAllButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+
+  private void showAllButtonActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO add your handling code here:
-  }   
+  }
 
   private void getCari() {
     String[] judul = { "Kode Peminjaman", "Nama", "Nama Ruangan", "Fasilitas", "Sesi Pinjam",
@@ -55,7 +55,7 @@ public class RekapFunction extends RekapLayout {
     model = new DefaultTableModel(judul, 0);
     tableContent.setModel(model);
     String sql = "select tblPeminjaman.kodePinjam,tblUser.nama,tblRuangan.namaRuangan,tblFasilitas.namaFasilitas,tblPeminjaman.ketSesi,tblPeminjaman.tglPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan join tblFasilitas on tblRuangan.idFasilitas=tblFasilitas.idFasilitas join tblUser on tblPeminjaman.nim=tblUser.nim where tblPeminjaman.kodepinjam = '"
-        + kolomCariInput.getText() + "' or tblUser.nama = '" + kolomCariInput.getText()
+        + kolomCariInput.getText() + "' or tblUser.nama = '%" + kolomCariInput.getText()
         + "%' or tblRuangan.namaRuangan = '" + kolomCariInput.getText() + "' or tblFasilitas.namaFasilitas = '"
         + kolomCariInput.getText() + "'";
     try {
