@@ -5,6 +5,7 @@ import java.sql.*;
 import java.time.LocalDate;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -173,7 +174,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     private void setSesi() {
         String sql = null;
         int co = sesiInput.getSelectedItem().toString().length();
-        String num = sesiInput.getSelectedItem().toString().substring(4, co);
+        String num = sesiInput.getSelectedItem().toString().substring(5, co);
         if (Integer.valueOf(num).equals(1)) {
             sql = "update tblRuangan set statSesi1='DIPAKAI' where idRuangan='"
                     + getIdRuangan(namaRuanganInput.getSelectedItem().toString())
@@ -194,8 +195,8 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
 
         try {
             st = conn.createStatement();
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
+            int row = st.executeUpdate(sql);
+            if (row != 0) {
                 JOptionPane.showMessageDialog(null, "Sukses menambahkan data");
             }
 
@@ -205,6 +206,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        setSesi();
         // this.mainMethod.setVisible(true);
         // this.dispose();
     }
@@ -216,12 +218,13 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
                 getIdRuangan(namaRuanganInput.getSelectedItem().toString())
                 + "','" + LocalDate.now().toString() + "','" + sesiInput.getSelectedItem().toString() +
                 "','"
-                + showKeterangan.getText() + "')";
+                + keteranganPeminjamanInput.getText() + "')";
         try {
             st = conn.createStatement();
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "SUKSES");
+            int row = st.executeUpdate(sql);
+            if (row != 0) {
+                JOptionPane.showMessageDialog(null, "Sukses");
+                setSesi();
             }
         } catch (Exception e) {
             // TODO: handle exception
