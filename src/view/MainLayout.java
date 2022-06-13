@@ -1,5 +1,5 @@
 package view;
-  
+
 import java.time.*;
 
 /**
@@ -208,7 +208,7 @@ public class MainLayout extends javax.swing.JFrame {
     }
 
     public String getNIM() {
-        return showNama.getText();
+        return showNim.getText();
     }
 
     public String getStatus() {

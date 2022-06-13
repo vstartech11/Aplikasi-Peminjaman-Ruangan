@@ -41,6 +41,12 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
                 namaRuanganInputItemStateChanged(evt);
             }
         });
+
+        this.pinjamButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pinjamButtonActionPerformed(evt);
+            }
+        });
     }
 
     private void getRuang() {
@@ -165,23 +171,58 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         }
     }
 
+    private void setSesi() {
+        String sql = null;
+        int co = sesiInput.getSelectedItem().toString().length();
+        String num = sesiInput.getSelectedItem().toString().substring(4, co);
+        if (Integer.valueOf(num).equals(1)) {
+            sql = "update tblRuangan set statSesi1='DIPAKAI' where idRuangan='"
+                    + getIdRuangan(namaRuanganInput.getSelectedItem().toString())
+                    + "'";
+        } else if (Integer.valueOf(num).equals(2)) {
+            sql = "update tblRuangan set statSesi2='DIPAKAI' where idRuangan='"
+                    + getIdRuangan(namaRuanganInput.getSelectedItem().toString())
+                    + "'";
+        } else if (Integer.valueOf(num).equals(3)) {
+            sql = "update tblRuangan set statSesi3='DIPAKAI' where idRuangan='"
+                    + getIdRuangan(namaRuanganInput.getSelectedItem().toString())
+                    + "'";
+        } else if (Integer.valueOf(num).equals(4)) {
+            sql = "update tblRuangan set statSesi4='DIPAKAI' where idRuangan='"
+                    + getIdRuangan(namaRuanganInput.getSelectedItem().toString())
+                    + "'";
+        }
+
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Sukses menambahkan data");
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println(getIdRuangan("G102"));
-        this.mainMethod.setVisible(true);
-        this.dispose();
+        // this.mainMethod.setVisible(true);
+        // this.dispose();
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('"
                 + getKode()
-                + "','" + this.mainMethod.showNim + "','" + getIdRuangan(namaRuanganInput.getSelectedItem().toString())
-                + "','" + LocalDate.now() + "','" + sesiInput.getSelectedItem().toString() + "','"
+                + "','" + this.mainMethod.getNIM() + "','" +
+                getIdRuangan(namaRuanganInput.getSelectedItem().toString())
+                + "','" + LocalDate.now().toString() + "','" + sesiInput.getSelectedItem().toString() +
+                "','"
                 + showKeterangan.getText() + "')";
         try {
             st = conn.createStatement();
             rs = st.executeQuery(sql);
             if (rs.next()) {
-                sql = "update ";
+                JOptionPane.showMessageDialog(null, "SUKSES");
             }
         } catch (Exception e) {
             // TODO: handle exception
