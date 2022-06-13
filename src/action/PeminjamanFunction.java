@@ -206,9 +206,8 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        setSesi();
-        // this.mainMethod.setVisible(true);
-        // this.dispose();
+        this.mainMethod.setVisible(true);
+        this.dispose();
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,8 +234,6 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         getRuang();
         getKet();
         getFasil();
-        // this.namaRuanganInput.setModel(new javax.swing.DefaultComboBoxModel<>(new
-        // String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
     }
 
     private void namaRuanganInputItemStateChanged(java.awt.event.ItemEvent evt) {
