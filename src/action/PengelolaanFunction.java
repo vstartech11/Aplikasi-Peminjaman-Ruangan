@@ -70,6 +70,21 @@ public class PengelolaanFunction extends Pengelolaan {
         });
     }
 
+    private String getIdRuangan(String a) {
+        String id = null;
+        String sql = "select idRuangan from tblRuangan where namaRuangan='" + a + "'";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                id = rs.getString(1);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return id;
+    }
+
     private void getTable() {
         String[] judul = { "Kode Peminjaman", "NIM", "Nama Ruangan", "Tanggal Pinjam", "Sesi",
                 "Keterangan Peminjaman" };
@@ -106,6 +121,7 @@ public class PengelolaanFunction extends Pengelolaan {
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Data ditemukan");
+                    namaRuanganInput.addItem(rs.getString(3));
                     namaRuanganInput.setSelectedItem(rs.getString(3));
                     final java.sql.Date dateNew = java.sql.Date.valueOf(rs.getString(4));
                     tanggalPinjamInput.setDate(dateNew);
@@ -162,12 +178,16 @@ public class PengelolaanFunction extends Pengelolaan {
             JOptionPane.showMessageDialog(null, "gagal");
         } else {
             // database di sini
-            String sql = "update tblPeminjaman set idRuangan='"++"'";
+            String sql = "update tblPeminjaman set idRuangan='"
+                    + getIdRuangan(namaRuanganInput.getSelectedItem().toString()) + "',tglPinjam='"
+                    + tanggalPinjamInput.getDate().toString() + "',ketSesi='" + sesiInput.getSelectedItem().toString()
+                    + "',ketPinjam='" + ketPeminjamanInputArea.getText() + "' where kodePinjam='"
+                    + kodeInput2.getText() + "'";
             try {
                 st = conn.createStatement();
                 int row = st.executeUpdate(sql);
                 if (row != 0) {
-
+                    JOptionPane.showMessageDialog(null, "MIE SUKSES ISI 1");
                 }
             } catch (Exception e) {
                 // TODO: handle exception

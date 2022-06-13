@@ -47,6 +47,7 @@ public class RekapFunction extends RekapLayout {
 
   private void showAllButtonActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO add your handling code here:
+    bersih();
   }
 
   private void getCari() {
