@@ -19,7 +19,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
 
     public PeminjamanFunction() {
         conn = Koneksi.koneksi();
-        getTabel();
+        main = MainMethod.main();
         getGedung();
         this.backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,10 +115,9 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String sql = "select ";
-
-        String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('" + kode
-                + "','11211024','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
+        String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('"
+                + getKode()
+                + "','"++"','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
     }
 
     private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {
