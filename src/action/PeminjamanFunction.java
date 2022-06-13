@@ -62,6 +62,22 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         }
     }
 
+    private void getKet() {
+        String sql = "Select statSesi1,statSesi2,statSesi3,statSesi4 from tblRuangan where idRuangan='"
+                + getIdRuangan(namaRuanganInput.getSelectedItem().toString()) + "'";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                if (rs.getString(1).equals("TERSEDIA")) {
+
+                }
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
     private String getKode() {
         String sql = "Select kodePinjam from tblPeminjaman where kodePinjam in (select max(kodePinjam) from tblPeminjaman) order by kodePinjam desc";
         String kode = null;
@@ -130,6 +146,8 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         System.out.println(getIdRuangan("G102"));
+        this.mainMethod.setVisible(true);
+        this.dispose();
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
