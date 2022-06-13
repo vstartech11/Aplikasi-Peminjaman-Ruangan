@@ -75,16 +75,19 @@ public class MainMethod extends MainLayout {
     private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
         PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(new MainMethod(this.nim, this.nama, this.status));
         peminjaman.setVisible(true);
+        this.dispose();
     }
 
     private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
         Pengelolaan pengelolaan = new PengelolaanFunction(new MainMethod(this.nim, this.nama, this.status));
         pengelolaan.setVisible(true);
+        this.dispose();
     }
 
     private void rekapMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
         RekapLayout rekapmenu = new RekapFunction(new MainMethod(this.nim, this.nama, this.status));
         rekapmenu.setVisible(true);
+        this.dispose();
     }
 
     public static void main(String[] args) {

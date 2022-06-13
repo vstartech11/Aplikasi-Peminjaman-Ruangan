@@ -67,10 +67,6 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void getTable() {
-        DefaultTableModel dm = (DefaultTableModel) tabelPengelolaan.getModel();
-        while (dm.getRowCount() > 0) {
-            dm.removeRow(0);
-        }
         String[] judul = { "Kode Peminjaman", "NIM", "Nama Ruangan", "Tanggal Pinjam", "Sesi",
                 "Keterangan Peminjaman" };
         model = new DefaultTableModel(judul, 0);
@@ -166,6 +162,9 @@ public class PengelolaanFunction extends Pengelolaan {
             try {
                 st = conn.createStatement();
                 int row = st.executeUpdate(sql);
+                if (row != 0) {
+
+                }
             } catch (Exception e) {
                 // TODO: handle exception
             }
