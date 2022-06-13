@@ -60,7 +60,6 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         String namaRuangan = namaRuanganInput.getSelectedItem().toString();
         String sesi = sesiInput.getSelectedItem().toString();
         String status = statusShow.getText();
-
     }
 
     public static void main(String[] args) {
