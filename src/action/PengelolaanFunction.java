@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 import view.Pengelolaan;
 /**
  *
@@ -17,31 +19,39 @@ public class PengelolaanFunction extends Pengelolaan{
     DefaultTableModel model;
     private int baristeerpilih;
     public PengelolaanFunction(){
-        String[]judul = {"Kode Peminjaman","Nama","Kode Ruangan","Tanggal Pinjam","Sesi"};
+        String[]judul = {"Kode Peminjaman","NIM","ID Ruangan","Tanggal Pinjam","Sesi","Keterangan Peminjaman"};
         model = new DefaultTableModel(judul,0);
-        String[]row1 = {"G65","Bintang","G203","13-06-2022","4"};
-        String[]row2 = {"G78","Saman","G206","14-06-2022","4"};
+        String[]row1 = {"PJ001","Bintang","1","13-06-2022","4"};
+        String[]row2 = {"PJ002","Saman","2","14-06-2022","4"};
         tabelPengelolaan.setModel(model);
+        
+        tabelPengelolaan.isEditing();
+        tabelPengelolaan.getColumnModel().getColumn(0).setPreferredWidth(150);
+        tabelPengelolaan.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tabelPengelolaan.getColumnModel().getColumn(2).setPreferredWidth(150);
+        tabelPengelolaan.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tabelPengelolaan.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tabelPengelolaan.getColumnModel().getColumn(5).setPreferredWidth(500);
         model.addRow(row1);
         model.addRow(row2);;
-        jPanel1.setVisible(false);
+        jPanel9.setVisible(false);
         jPanel2.setVisible(false);
         System.out.println(tabelPengelolaan.getRowCount());
         
         for (int i =0;i< tabelPengelolaan.getRowCount();i++){
             listkode.add(tabelPengelolaan.getValueAt(i, 0));
         }
-        cariButton.addActionListener(new java.awt.event.ActionListener() {
+        cariButton2.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
         cariButtonActionPerformed(evt);
     }
     });
-        okButton.addActionListener(new java.awt.event.ActionListener() {
+        okButton2.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
         okButtonActionPerformed(evt);
       }
     });
-        kembaliButton.addActionListener(new java.awt.event.ActionListener() {
+        kembaliButton2.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
         kembaliButtonActionPerformed(evt);
     }
@@ -60,13 +70,13 @@ public class PengelolaanFunction extends Pengelolaan{
         
     }
     private void cariButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        String kode = kodeInput.getText();
+        String kode = kodeInput2.getText();
         System.out.println(kode);
         for (int i =0;i<listkode.size();i++){
         if (kode.equals(listkode.get(i))){
             System.out.println("Berhasil mas");
             baristeerpilih = i;
-            jPanel1.setVisible(true);
+            jPanel9.setVisible(true);
             break;
         }
         else{
@@ -75,33 +85,35 @@ public class PengelolaanFunction extends Pengelolaan{
         }
     }
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-    boolean hapus = hapusRadioButton.isSelected();
-    boolean edit = editRadioButton.isSelected();
+    boolean hapus = hapusRadioButton2.isSelected();
+    boolean edit = editRadioButton2.isSelected();
     if (hapus == true){ //fungsi untuk menghapus peminjaman ruangan dari sisi admin
-        jPanel1.setVisible(false);
+        jPanel9.setVisible(false);
     model.removeRow(baristeerpilih);
     }
     else if(edit == true){
-    jPanel1.setVisible(false);
+    jPanel9.setVisible(false);
     jPanel2.setVisible(true);
     }
     }
     private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        jPanel1.setVisible(false);
-        kodeInput.setText("");
+        jPanel9.setVisible(false);
+        kodeInput2.setText("");
     }
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        String namaRuangan = namaRuanganInput.getText();
+        String idRuangan = namaRuanganInput.getText();
         String tanggalPinjam = tanggalPinjamInput.getText();
+        String ketPeminjaman = ketPeminjamanInputArea.getText();
         String sesi = sesiInput.getText();
-        model.setValueAt(namaRuangan, baristeerpilih, 2);
-        model.setValueAt(tanggalPinjam, baristeerpilih, 3);
-        model.setValueAt(sesi, baristeerpilih, 4);
+        model.setValueAt(idRuangan, baristeerpilih, 3);
+        model.setValueAt(tanggalPinjam, baristeerpilih, 4);
+        model.setValueAt(sesi, baristeerpilih, 5);
+        model.setValueAt(ketPeminjaman, baristeerpilih, 6);
         jPanel2.setVisible(false);
         namaRuanganInput.setText("");
         tanggalPinjamInput.setText("");
         sesiInput.setText("");
-        kodeInput.setText("");
+        kodeInput2.setText("");
     }
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
     
