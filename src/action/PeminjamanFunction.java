@@ -2,7 +2,13 @@ package action;
 
 import view.PeminjamanRuanganLayout;
 import java.sql.*;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PeminjamanFunction extends PeminjamanRuanganLayout {
     Connection conn = null;
@@ -14,11 +20,37 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     public PeminjamanFunction() {
         conn = Koneksi.koneksi();
         getTabel();
+        getGedung();
         this.backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
+    }
+
+    private void getRuang() {
+        String sql = "select namaRuangan from tblRuangan where namaRuangan like '"
+                + gedungInput.getSelectedItem().toString() + "%'";
+        String[] list = {};
+        List<String> i = new ArrayList<String>(Arrays.asList(list));
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                i.add(rs.getString(1));
+            }
+            list = i.toArray(list);
+            DefaultComboBoxModel comboR = new DefaultComboBoxModel<String>(list);
+            namaRuanganInput.setModel(comboR);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
+    private void getGedung() {
+        String[] list = { "E", "F", "G", "LAB" };
+        DefaultComboBoxModel comboG = new DefaultComboBoxModel<String>(list);
+        gedungInput.setModel(comboG);
     }
 
     private void getTabel() {
@@ -42,7 +74,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose();
+        getRuang();
 
     }
 
