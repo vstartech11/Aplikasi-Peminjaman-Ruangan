@@ -66,7 +66,7 @@ public class MainMethod extends MainLayout {
     }
 
     private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction();
+        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(new MainMethod());
         peminjaman.setVisible(true);
     }
     private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed

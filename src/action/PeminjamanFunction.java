@@ -11,13 +11,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PeminjamanFunction extends PeminjamanRuanganLayout {
+    private MainMethod mainMethod;
     Connection conn = null;
     DefaultTableModel model;
     ResultSet rs = null;
     Statement st = null;
     int rows = 0;
 
-    public PeminjamanFunction() {
+    public PeminjamanFunction(MainMethod mainMethod) {
+        this.mainMethod = mainMethod;
         conn = Koneksi.koneksi();
         getTabel();
         getGedung();
@@ -118,7 +120,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
         String sql = "select ";
 
         String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('" + kode
-                + "','11211024','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
+                + "','" + this.mainMethod.showNim + "','2','2022-06-14','SESI 1','Kelas praktikum alpro B')";
     }
 
     private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {

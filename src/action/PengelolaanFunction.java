@@ -186,7 +186,6 @@ public class PengelolaanFunction extends Pengelolaan {
             ketPeminjamanInputArea.setText("");
             jPanel2.setVisible(false);
             jPanel9.setVisible(false);
-
         }
     }
 
@@ -198,7 +197,6 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
         jPanel2.setVisible(false);
         kodeInput2.setText("");
     }
