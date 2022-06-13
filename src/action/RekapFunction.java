@@ -44,11 +44,11 @@ public class RekapFunction extends RekapLayout {
         "Tanggal Peminjaman" };
     model = new DefaultTableModel(judul, 0);
     tableContent.setModel(model);
-    String sql = "select tblPeminjaman.kodePinjam,tblUser.nama,tblRuangan.namaRuangan,tblFasilitas.namaFasilitas,tblPeminjaman.ketSesi,tblPeminjaman.tglPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan join tblFasilitas on tblRuangan.idFasilitas=tblFasilitas.idFasilitas join tblUser on tblPeminjaman.nim=tblUser.nim where tblPeminjaman.kodepinjam LIKE '__%"
-        + kolomCariInput.getText() + "' or tblUser.nama like '%" + kolomCariInput.getText()
-        + "%' or tblRuangan.namaRuangan like '_%" + kolomCariInput.getText() + "' or tblFasilitas.namaFasilitas like '%"
-        + kolomCariInput.getText() + "%' or tblPeminjaman.ketSesi like '%" + kolomCariInput.getText()
-        + "' or tblPeminjaman.tglPinjam='" + kolomCariInput.getText() + "'";
+    String sql = "select tblPeminjaman.kodePinjam,tblUser.nama,tblRuangan.namaRuangan,tblFasilitas.namaFasilitas,tblPeminjaman.ketSesi,tblPeminjaman.tglPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan join tblFasilitas on tblRuangan.idFasilitas=tblFasilitas.idFasilitas join tblUser on tblPeminjaman.nim=tblUser.nim where tblPeminjaman.kodepinjam = '"
+        + kolomCariInput.getText() + "' or tblUser.nama = '" + kolomCariInput.getText()
+        + "' or tblRuangan.namaRuangan = '" + kolomCariInput.getText() + "' or tblFasilitas.namaFasilitas = '"
+        + kolomCariInput.getText() + "' or tblPeminjaman.ketSesi = '" + kolomCariInput.getText()
+        + "'";
     try {
       st = conn.createStatement();
       rs = st.executeQuery(sql);
@@ -74,7 +74,7 @@ public class RekapFunction extends RekapLayout {
         "Tanggal Peminjaman" };
     model = new DefaultTableModel(judul, 0);
     tableContent.setModel(model);
-    String sql = "select tblPeminjaman.kodePinjam,tblUser.nama,tblRuangan.namaRuangan,tblFasilitas.namaFasilitas,tblPeminjaman.ketSesi,tblPeminjaman.tglPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan join tblFasilitas on tblRuangan.idRuangan=tblFasilitas.idFasilitas join tblUser on tblPeminjaman.nim=tblUser.nim";
+    String sql = "select tblPeminjaman.kodePinjam,tblUser.nama,tblRuangan.namaRuangan,tblFasilitas.namaFasilitas,tblPeminjaman.ketSesi,tblPeminjaman.tglPinjam from tblPeminjaman join tblRuangan on tblPeminjaman.idRuangan=tblRuangan.idRuangan join tblFasilitas on tblRuangan.idFasilitas=tblFasilitas.idFasilitas join tblUser on tblPeminjaman.nim=tblUser.nim";
     try {
       st = conn.createStatement();
       rs = st.executeQuery(sql);
