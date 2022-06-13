@@ -43,9 +43,9 @@ public class Pengelolaan extends javax.swing.JFrame {
                 namaRuanganInput = new javax.swing.JTextField();
                 jLabel3 = new javax.swing.JLabel();
                 jLabel4 = new javax.swing.JLabel();
-                tanggalPinjamInput = new javax.swing.JTextField();
+                tanggalPinjamInput = new com.toedter.calendar.JDateChooser();
                 jLabel5 = new javax.swing.JLabel();
-                sesiInput = new javax.swing.JTextField();
+                sesiInput = new javax.swing.JComboBox<>();
                 cancelButton = new javax.swing.JButton();
                 simpanButton = new javax.swing.JButton();
                 jLabel7 = new javax.swing.JLabel();
@@ -53,6 +53,16 @@ public class Pengelolaan extends javax.swing.JFrame {
                 ketPeminjamanInputArea = new javax.swing.JTextArea();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+                tanggalPinjamInput.setDateFormatString("dd-MM-yyyy");
+
+                sesiInput.setModel(
+                new javax.swing.DefaultComboBoxModel<>(new String[] { "SESI 1", "SESI 2", "SESI 3", "SESI 4" }));
+                sesiInput.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                sesiInputActionPerformed(evt);
+                        }
+                });
 
                 tabelPengelolaan.setModel(new javax.swing.table.DefaultTableModel(
                                 new Object[][] {
@@ -392,6 +402,10 @@ public class Pengelolaan extends javax.swing.JFrame {
                 // TODO add your handling code here:
         }// GEN-LAST:event_simpanButtonActionPerformed
 
+        private void sesiInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_simpanButtonActionPerformed
+                // TODO add your handling code here:
+        }
+
         /**
          * @param args the command line arguments
          */
@@ -461,9 +475,9 @@ public class Pengelolaan extends javax.swing.JFrame {
         protected javax.swing.JTextField kodeInput2;
         protected javax.swing.JTextField namaRuanganInput;
         protected javax.swing.JButton okButton2;
-        protected javax.swing.JTextField sesiInput;
+        protected javax.swing.JComboBox<String> sesiInput;
         protected javax.swing.JButton simpanButton;
         protected javax.swing.JTable tabelPengelolaan;
-        protected javax.swing.JTextField tanggalPinjamInput;
+        protected com.toedter.calendar.JDateChooser tanggalPinjamInput;
         // End of variables declaration//GEN-END:variables
 }

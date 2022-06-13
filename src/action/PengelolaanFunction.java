@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import view.Pengelolaan;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -31,8 +32,8 @@ public class PengelolaanFunction extends Pengelolaan {
         this.mainMethod = mainMethod;
         conn = Koneksi.koneksi();
         getTable();
-        jPanel9.setVisible(false);
-        jPanel2.setVisible(false);
+        jPanel9.setVisible(true);
+        jPanel2.setVisible(true);
         System.out.println(tabelPengelolaan.getRowCount());
 
         // for (int i = 0; i < tabelPengelolaan.getRowCount(); i++) {
@@ -107,8 +108,9 @@ public class PengelolaanFunction extends Pengelolaan {
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Data ditemukan");
                     namaRuanganInput.setText(rs.getString(3));
-                    tanggalPinjamInput.setText(rs.getString(4));
-                    sesiInput.setText(rs.getString(5));
+                    final java.sql.Date dateNew = java.sql.Date.valueOf(rs.getString(4));
+                    tanggalPinjamInput.setDate(dateNew);
+                    sesiInput.setSelectedItem(rs.getString(5));
                     ketPeminjamanInputArea.setText(rs.getString(6));
                     jPanel9.setVisible(true);
                 } else
@@ -170,8 +172,8 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if (namaRuanganInput.getText().equals("") || tanggalPinjamInput.getText().equals("")
-                || sesiInput.getText().equals("") || isRadioButtonSelected() == false
+        if (namaRuanganInput.getText().equals("") || tanggalPinjamInput.getDate().equals("")
+                || sesiInput.getSelectedItem().equals("") || isRadioButtonSelected() == false
                 || ketPeminjamanInputArea.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "gagal");
         } else {
@@ -186,8 +188,6 @@ public class PengelolaanFunction extends Pengelolaan {
 
             // ini fungsi lain
             namaRuanganInput.setText("");
-            tanggalPinjamInput.setText("");
-            sesiInput.setText("");
             editRadioButton2.setSelected(false);
             hapusRadioButton2.setSelected(false);
             ketPeminjamanInputArea.setText("");
@@ -206,5 +206,10 @@ public class PengelolaanFunction extends Pengelolaan {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
         jPanel2.setVisible(false);
         kodeInput2.setText("");
+    }
+
+    public static void main(String[] args) {
+        Pengelolaan pengelolaan = new PengelolaanFunction(new MainMethod("11211032", "1234", "ADMIN"));
+        pengelolaan.setVisible(true);
     }
 }
