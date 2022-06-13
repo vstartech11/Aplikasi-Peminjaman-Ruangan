@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import view.Pengelolaan;
 import java.sql.*;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
@@ -29,6 +30,7 @@ public class PengelolaanFunction extends Pengelolaan {
     int rows = 0;
 
     public PengelolaanFunction(MainMethod mainMethod) {
+
         this.mainMethod = mainMethod;
         conn = Koneksi.koneksi();
         getTable();
@@ -120,7 +122,7 @@ public class PengelolaanFunction extends Pengelolaan {
                 st = conn.createStatement();
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
-
+                    kodeInput2.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Data ditemukan");
                     namaRuanganInput.addItem(rs.getString(3));
                     namaRuanganInput.setSelectedItem(rs.getString(3));
@@ -174,6 +176,9 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String newDate = formatter.format(tanggalPinjamInput.getDate());
+
         if (namaRuanganInput.getSelectedItem().equals("") || tanggalPinjamInput.getDate().equals("")
                 || sesiInput.getSelectedItem().equals("") || isRadioButtonSelected() == false
                 || ketPeminjamanInputArea.getText().isEmpty()) {
@@ -181,7 +186,7 @@ public class PengelolaanFunction extends Pengelolaan {
         } else {
             // database di sini
             String sql = "update tblPeminjaman set tglPinjam='"
-                    + tanggalPinjamInput.getDate().toString() + "',ketPinjam='" + ketPeminjamanInputArea.getText()
+                    + newDate + "',ketPinjam='" + ketPeminjamanInputArea.getText()
                     + "' where kodePinjam='"
                     + kodeInput2.getText() + "'";
             try {
@@ -189,6 +194,10 @@ public class PengelolaanFunction extends Pengelolaan {
                 int row = st.executeUpdate(sql);
                 if (row != 0) {
                     JOptionPane.showMessageDialog(null, "MIE SUKSES ISI 1");
+                    Pengelolaan kelola = new PengelolaanFunction(new MainMethod(this.mainMethod.getNIM(),
+                            this.mainMethod.getNama(), this.mainMethod.getStatus()));
+                    kelola.setVisible(true);
+                    this.dispose();
                 }
             } catch (Exception e) {
                 // TODO: handle exception

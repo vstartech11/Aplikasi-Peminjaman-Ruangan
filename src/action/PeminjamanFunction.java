@@ -2,6 +2,8 @@ package action;
 
 import view.PeminjamanRuanganLayout;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 import javax.swing.DefaultComboBoxModel;
@@ -211,11 +213,14 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     }
 
     public void pinjamButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String newDate = formatter.format(tanggalInput.getDate());
+
         String sql = "insert into tblPeminjaman(kodePinjam,nim,idRuangan,tglPinjam,ketSesi,ketPinjam) values('"
                 + getKode()
                 + "','" + this.mainMethod.getNIM() + "','" +
                 getIdRuangan(namaRuanganInput.getSelectedItem().toString())
-                + "','" + LocalDate.now().toString() + "','" + sesiInput.getSelectedItem().toString() +
+                + "','" + newDate + "','" + sesiInput.getSelectedItem().toString() +
                 "','"
                 + keteranganPeminjamanInput.getText() + "')";
         try {
@@ -224,6 +229,10 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
             if (row != 0) {
                 JOptionPane.showMessageDialog(null, "Sukses");
                 setSesi();
+                PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(new MainMethod(this.mainMethod.getNIM(),
+                        this.mainMethod.getNama(), this.mainMethod.getStatus()));
+                peminjaman.setVisible(true);
+                this.dispose();
             }
         } catch (Exception e) {
             // TODO: handle exception
