@@ -5,17 +5,17 @@ import java.sql.*;
 import view.MainLayout;
 import view.LoginForm;
 import view.Register;
+import java.awt.event.*;
 
 public class LoginFunction extends LoginForm {
   Connection conn = null;
   ResultSet rs = null;
-  PreparedStatement pst = null;
   Statement st = null;
-  private String nim;
-  private String password;
 
   public LoginFunction() {
     conn = Koneksi.koneksi();
+    getCenter();
+    nim_field.setEditable(true);
     btn_register.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         btn_registerActionPerformed(evt);
@@ -26,18 +26,29 @@ public class LoginFunction extends LoginForm {
         btn_loginActionPerformed(evt);
       }
     });
+    nim_field.addKeyListener(new KeyAdapter() {
+      public void keyPressed(KeyEvent ke) {
+        if ((ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') || ke.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
+          nim_field.setEditable(true);
+        } else {
+          nim_field.setEditable(false);
+        }
+      }
+    });
+  }
+
+  private void getCenter() {
+    setLocationRelativeTo(null);
   }
 
   public void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {
-    JOptionPane.showMessageDialog(null, "tersambung, " + conn);
-    nim = getNim();
-    password = getPassword();
-    String sql = "select * from tblUser where nim='" + nim + "' and password='" + password + "'";
+    String sql = "select * from tblUser where nim='" + getNim() + "' and password='" + getPassword() + "'";
     try {
       st = conn.createStatement();
       rs = st.executeQuery(sql);
       if (rs.next()) {
         MainLayout s = new MainMethod(rs.getString("nim"), rs.getString("nama"), rs.getString("status"));
+        JOptionPane.showMessageDialog(null, "Berhasil tersambung");
         s.setVisible(true);
         conn.close();
         dispose();
@@ -47,29 +58,6 @@ public class LoginFunction extends LoginForm {
     } catch (Exception e) {
       JOptionPane.showMessageDialog(null, e);
     }
-    // nim = getNim();
-    // password = getPassword();
-    // try (Connection conn = DriverManager.getConnection(sqlconn, "bintang",
-    // "441840")) {
-
-    // st = conn.createStatement();
-    // rs = st.executeQuery(sql);
-    // System.out.println(conn);
-    // if (rs.next()) {
-    // MainLayout s = new MainLayout();
-    // s.setVisible(true);
-    // System.out.println("Sukses");
-    // dispose();
-    // } else {
-    // JOptionPane.showMessageDialog(null, "NIM atau Password salah!");
-    // nim_field.setText(null);
-    // pass_field.setText(null);
-    // }
-    // } catch (SQLException e) {
-    // System.out.println("Error connection");
-    // JOptionPane.showMessageDialog(null, e);
-    // }
-
   }
 
   private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_registerActionPerformed

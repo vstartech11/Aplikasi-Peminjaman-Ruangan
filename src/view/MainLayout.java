@@ -13,6 +13,7 @@ public class MainLayout extends javax.swing.JFrame {
      */
     public MainLayout() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

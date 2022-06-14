@@ -232,7 +232,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public javax.swing.JTextField nim_field;
-    public javax.swing.JPasswordField pass_field;
+    protected javax.swing.JTextField nim_field;
+    protected javax.swing.JPasswordField pass_field;
     // End of variables declaration//GEN-END:variables
 }

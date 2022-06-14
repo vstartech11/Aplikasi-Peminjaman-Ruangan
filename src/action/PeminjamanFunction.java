@@ -19,9 +19,9 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
     DefaultTableModel model;
     ResultSet rs = null;
     Statement st = null;
-    int rows = 0;
 
     public PeminjamanFunction(MainMethod mainMethod) {
+        getCenter();
         this.mainMethod = mainMethod;
         conn = Koneksi.koneksi();
         getTabel();
@@ -49,6 +49,10 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
                 pinjamButtonActionPerformed(evt);
             }
         });
+    }
+
+    private void getCenter() {
+        setLocationRelativeTo(null);
     }
 
     private void getRuang() {

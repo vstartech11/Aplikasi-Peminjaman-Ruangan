@@ -12,6 +12,7 @@ public class MainMethod extends MainLayout {
     private String status;
 
     public MainMethod() {
+        getCenter();
         logoutMenu.setEnabled(false);
         peminjamanMenu.setEnabled(false);
         pengelolaanMenu.setEnabled(false);
@@ -22,6 +23,10 @@ public class MainMethod extends MainLayout {
                 loginMenuActionPerformed(evt);
             }
         });
+    }
+
+    private void getCenter() {
+        setLocationRelativeTo(null);
     }
 
     public MainMethod(String nim, String nama, String status) {
@@ -63,6 +68,8 @@ public class MainMethod extends MainLayout {
     }
 
     private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {
+        LoginForm login = new LoginFunction();
+        login.setVisible(true);
         this.dispose();
     }
 

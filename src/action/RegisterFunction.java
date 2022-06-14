@@ -9,16 +9,11 @@ import java.awt.event.*;
 public class RegisterFunction extends Register {
     Connection conn = null;
     ResultSet rs = null;
-    PreparedStatement pst = null;
     Statement st = null;
     int rows = 0;
-    private String nama;
-    private String nim;
-    private String email;
-    private String password;
-    private String noTelp;
 
     public RegisterFunction() {
+        getCenter();
         conn = Koneksi.koneksi();
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -33,26 +28,35 @@ public class RegisterFunction extends Register {
         });
 
         noHp.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent ke){
+            public void keyPressed(KeyEvent ke) {
                 if ((ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') || ke.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
                     noHp.setEditable(true);
-                 } else {
+                } else {
                     noHp.setEditable(false);
-                 }
+                }
+            }
+        });
+        nim.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                if ((ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') || ke.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
+                    nim.setEditable(true);
+                } else {
+                    nim.setEditable(false);
+                }
             }
         });
     }
 
-    public void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_registerButtonActionPerformed
-        this.nama = getNama();
-        this.nim = getNIM();
-        this.email = getEmail();
-        this.password = getPassword();
-        this.noTelp = getNoHP();
-        String sql = "insert into tblUser(nim,nama,email,noTelp,password,status) values ('" + nim + "','" + nama
-                + "','" + email + "','" + noTelp + "','" + password + "','USER')";
+    private void getCenter() {
+        setLocationRelativeTo(null);
+    }
 
-        if(!isValidEmailAddress(email)){
+    public void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_registerButtonActionPerformed
+        String sql = "insert into tblUser(nim,nama,email,noTelp,password,status) values ('" + getNIM() + "','"
+                + getNama()
+                + "','" + getEmail() + "','" + getNoHP() + "','" + getPassword() + "','USER')";
+
+        if (!isValidEmailAddress(getEmail())) {
             JOptionPane.showMessageDialog(null, "Email tidak valid!");
         } else {
             int jawab = JOptionPane.showConfirmDialog(null, "Apakah data yang anda masukkan sudah benar?");
@@ -100,5 +104,5 @@ public class RegisterFunction extends Register {
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
-     }
+    }
 }

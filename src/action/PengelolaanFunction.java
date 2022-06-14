@@ -25,12 +25,10 @@ public class PengelolaanFunction extends Pengelolaan {
     private MainMethod mainMethod;
     Connection conn = null;
     ResultSet rs = null;
-    PreparedStatement pst = null;
     Statement st = null;
-    int rows = 0;
 
     public PengelolaanFunction(MainMethod mainMethod) {
-
+        getCenter();
         this.mainMethod = mainMethod;
         conn = Koneksi.koneksi();
         getTable();
@@ -70,6 +68,10 @@ public class PengelolaanFunction extends Pengelolaan {
                 backButtonActionPerformed(evt);
             }
         });
+    }
+
+    private void getCenter() {
+        setLocationRelativeTo(null);
     }
 
     private String getIdRuangan(String a) {

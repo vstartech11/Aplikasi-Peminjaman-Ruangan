@@ -10,10 +10,10 @@ public class RekapFunction extends RekapLayout {
   DefaultTableModel model;
   ResultSet rs = null;
   Statement st = null;
-  int rows = 0;
   private MainMethod mainMethod;
 
   public RekapFunction(MainMethod mainMethod) {
+    getCenter();
     conn = Koneksi.koneksi();
     bersih();
     this.mainMethod = mainMethod;
@@ -34,6 +34,10 @@ public class RekapFunction extends RekapLayout {
         showAllButtonActionPerformed(evt);
       }
     });
+  }
+
+  private void getCenter() {
+    setLocationRelativeTo(null);
   }
 
   private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {
