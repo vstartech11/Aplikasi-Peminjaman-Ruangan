@@ -245,16 +245,12 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
 
     private void gedungInputItemStateChanged(java.awt.event.ItemEvent evt) {
         getRuang();
-        getKet();
-        getFasil();
     }
 
     private void namaRuanganInputItemStateChanged(java.awt.event.ItemEvent evt) {
-        if (namaRuanganInput.getSelectedItem().equals("Item 1")) {
-            this.showKeterangan.setText("a");
-        } else if (namaRuanganInput.getSelectedItem().equals("Item 2")) {
-            this.showKeterangan.setText("b");
-        }
+        getKet();
+        getFasil();
+
     }
 
 }
