@@ -69,20 +69,20 @@ public class Pengelolaan extends PengelolaanLayout {
         });
     }
 
-    private String getIdRuangan(String a) {
-        String id = null;
-        String sql = "select idRuangan from tblRuangan where namaRuangan='" + a + "'";
-        try {
-            st = conn.createStatement();
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                id = rs.getString(1);
-            }
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        return id;
-    }
+    // private String getIdRuangan(String a) {
+    //     String id = null;
+    //     String sql = "select idRuangan from tblRuangan where namaRuangan='" + a + "'";
+    //     try {
+    //         st = conn.createStatement();
+    //         rs = st.executeQuery(sql);
+    //         if (rs.next()) {
+    //             id = rs.getString(1);
+    //         }
+    //     } catch (Exception e) {
+    //         // TODO: handle exception
+    //     }
+    //     return id;
+    // }
 
     private void getTable() {
         String[] judul = { "Kode Peminjaman", "NIM", "Nama Ruangan", "Tanggal Pinjam", "Sesi",
