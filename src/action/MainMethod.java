@@ -30,8 +30,8 @@ public class MainMethod extends MainLayout {
     public MainMethod(User user) {
         this.user = user;
 
-        this.showNama.setText(this.user.getNama());
-        this.showNim.setText(this.user.getNim());
+        this.showNama.setText(user.getNama());
+        this.showNim.setText(user.getNim());
         this.showStatus.setText(user.getStatus());
 
         loginMenu.setEnabled(false);
