@@ -1,15 +1,15 @@
-package action;
+package controller;
 
-import view.LoginForm;
+import view.LoginLayout;
 import view.MainLayout;
-import view.PeminjamanRuanganLayout;
-import view.Pengelolaan;
+import view.PeminjamanLayout;
+import view.PengelolaanLayout;
 import view.RekapLayout;
 
-public class MainMethod extends MainLayout {
+public class Main extends MainLayout {
     private User user;
 
-    public MainMethod() {
+    public Main() {
         getCenter();
         logoutMenu.setEnabled(false);
         peminjamanMenu.setEnabled(false);
@@ -27,7 +27,7 @@ public class MainMethod extends MainLayout {
         setLocationRelativeTo(null);
     }
 
-    public MainMethod(User user) {
+    public Main(User user) {
         this.user = user;
 
         this.showNama.setText(this.user.getNama());
@@ -65,37 +65,37 @@ public class MainMethod extends MainLayout {
     }
 
     private void logoutMenuActionPerformed(java.awt.event.ActionEvent evt) {
-        LoginForm login = new LoginFunction();
+        LoginLayout login = new Login();
         login.setVisible(true);
         this.dispose();
     }
 
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        LoginForm login = new LoginFunction();
+        LoginLayout login = new Login();
         login.setVisible(true);
         dispose();
     }
 
     private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(user, new MainMethod(user));
+        PeminjamanLayout peminjaman = new Peminjaman(user, new Main(user));
         peminjaman.setVisible(true);
         this.dispose();
     }
 
     private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        Pengelolaan pengelolaan = new PengelolaanFunction(user);
+        PengelolaanLayout pengelolaan = new Pengelolaan(user);
         pengelolaan.setVisible(true);
         this.dispose();
     }
 
     private void rekapMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        RekapLayout rekapmenu = new RekapFunction(new MainMethod(user));
+        RekapLayout rekapmenu = new Rekap(new Main(user));
         rekapmenu.setVisible(true);
         this.dispose();
     }
 
     public static void main(String[] args) {
-        MainLayout mainLayout = new MainMethod();
+        MainLayout mainLayout = new Main();
         mainLayout.setVisible(true);
     }
 }

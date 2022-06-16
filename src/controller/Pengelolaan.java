@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package action;
+package controller;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 // import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import view.Pengelolaan;
+import view.PengelolaanLayout;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
  *
  * @author USER
  */
-public class PengelolaanFunction extends Pengelolaan {
+public class Pengelolaan extends PengelolaanLayout {
     List<String> listkode = new ArrayList<String>();
     DefaultTableModel model;
     private User user;
@@ -27,7 +27,7 @@ public class PengelolaanFunction extends Pengelolaan {
     ResultSet rs = null;
     Statement st = null;
 
-    public PengelolaanFunction(User user) {
+    public Pengelolaan(User user) {
         getCenter();
         this.user = user;
         conn = Koneksi.koneksi();
@@ -162,7 +162,7 @@ public class PengelolaanFunction extends Pengelolaan {
                 JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
                 hapusRadioButton2.setSelected(false);
                 kodeInput2.setText(null);
-                Pengelolaan kelola = new PengelolaanFunction(user);
+                PengelolaanLayout kelola = new Pengelolaan(user);
                 kelola.setVisible(true);
                 this.dispose();
             }
@@ -194,7 +194,7 @@ public class PengelolaanFunction extends Pengelolaan {
                 int row = st.executeUpdate(sql);
                 if (row != 0) {
                     JOptionPane.showMessageDialog(null, "MIE SUKSES ISI 1");
-                    Pengelolaan kelola = new PengelolaanFunction(user);
+                    PengelolaanLayout kelola = new Pengelolaan(user);
                     kelola.setVisible(true);
                     this.dispose();
                 }

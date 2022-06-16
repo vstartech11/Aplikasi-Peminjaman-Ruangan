@@ -1,8 +1,8 @@
-package action;
+package controller;
 
-import view.LoginForm;
+import view.LoginLayout;
 
-public class User extends LoginForm{
+public class User extends LoginLayout{
     private String nim;
     private String nama;
     private String email;

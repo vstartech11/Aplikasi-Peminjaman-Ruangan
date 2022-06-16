@@ -1,18 +1,18 @@
-package action;
+package controller;
 
 import view.RekapLayout;
 import java.sql.*;
 import javax.swing.table.*;
 
 
-public class RekapFunction extends RekapLayout {
+public class Rekap extends RekapLayout {
   Connection conn = null;
   DefaultTableModel model;
   ResultSet rs = null;
   Statement st = null;
-  private MainMethod mainMethod;
+  private Main mainMethod;
 
-  public RekapFunction(MainMethod mainMethod) {
+  public Rekap(Main mainMethod) {
     getCenter();
     conn = Koneksi.koneksi();
     bersih();

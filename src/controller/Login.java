@@ -1,18 +1,18 @@
-package action;
+package controller;
 
 import javax.swing.JOptionPane;
 import java.sql.*;
 import view.MainLayout;
-import view.LoginForm;
-import view.Register;
+import view.LoginLayout;
+import view.RegisterLayout;
 import java.awt.event.*;
 
-public class LoginFunction extends LoginForm {
+public class Login extends LoginLayout {
   Connection conn = null;
   ResultSet rs = null;
   Statement st = null;
 
-  public LoginFunction() {
+  public Login() {
     conn = Koneksi.koneksi();
     getCenter();
     nim_field.setEditable(true);
@@ -49,7 +49,7 @@ public class LoginFunction extends LoginForm {
       rs = st.executeQuery(sql);
       if (rs.next()) {
         User user = new User(rs.getString("nim"), rs.getString("nama"), rs.getString("email"), rs.getString("noTelp"), rs.getString("password"), rs.getString("status"));
-        MainLayout s = new MainMethod(user);
+        MainLayout s = new Main(user);
         JOptionPane.showMessageDialog(null, "Berhasil tersambung");
         s.setVisible(true);
         conn.close();
@@ -63,13 +63,13 @@ public class LoginFunction extends LoginForm {
   }
 
   private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_registerActionPerformed
-    Register registerForm = new RegisterFunction();
+    RegisterLayout registerForm = new Register();
     registerForm.setVisible(true);
     this.dispose();
   }// GEN-LAST:event_btn_loginActionPerformed
 
   public static void main(String[] args) {
-    LoginForm s = new LoginFunction();
+    LoginLayout s = new Login();
     s.setVisible(true);
   }
 
