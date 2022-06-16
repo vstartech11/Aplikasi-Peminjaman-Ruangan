@@ -48,6 +48,7 @@ public class Register extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 720));
+        setLocationRelativeTo(null);
 
         daftarAkunText.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         daftarAkunText.setLabelFor(this);

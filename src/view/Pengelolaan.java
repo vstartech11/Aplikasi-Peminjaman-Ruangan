@@ -54,6 +54,7 @@ public class Pengelolaan extends javax.swing.JFrame {
                 backButton = new javax.swing.JButton();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setLocationRelativeTo(null);
 
                 tanggalPinjamInput.setDateFormatString("dd-MM-yyyy");
 

@@ -52,12 +52,17 @@ public class RegisterFunction extends Register {
     }
 
     public void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_registerButtonActionPerformed
-        User register = new User(nim.getText(), nama.getText(), email.getText(), noHp.getText(), String.valueOf(password.getPassword()));
+        User register = new User(nim.getText(), nama.getText(), email.getText(), noHp.getText(), String.valueOf(password.getPassword()), "USER");
         String sql = "insert into tblUser(nim,nama,email,noTelp,password,status) values ('" + register.getNim() + "','"
                 + register.getNama()
                 + "','" + register.getEmail() + "','" + register.getNoTelpon() + "','" + register.getPassword() + "','USER')";
 
-        if (!isValidEmailAddress(register.getEmail())) {
+        if (register.getNama().equals("") || register.getNim().equals("") || register.getEmail().equals("") || register.getNoTelpon().equals("") || register.getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, "Harap isi kolom yang kosong!");
+            if(!isValidEmailAddress(register.getEmail())){
+                JOptionPane.showMessageDialog(null, "Email tidak valid!");
+            }
+        } else if(!isValidEmailAddress(register.getEmail())){
             JOptionPane.showMessageDialog(null, "Email tidak valid!");
         } else {
             int jawab = JOptionPane.showConfirmDialog(null, "Apakah data yang anda masukkan sudah benar?");
@@ -81,12 +86,6 @@ public class RegisterFunction extends Register {
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
-
-                    // MainMethod layout = new MainMethod(this.username);
-                    // layout.mainSetUsername(this.username);
-                    // layout.adminOrNot();
-                    // layout.setLocationRelativeTo(this);
-                    // layout.setVisible(true);
                     break;
                 case JOptionPane.NO_OPTION:
                     break;

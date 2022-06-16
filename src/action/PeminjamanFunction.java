@@ -13,17 +13,20 @@ import java.util.List;
 
 public class PeminjamanFunction extends PeminjamanRuanganLayout {
     private MainMethod mainMethod;
+    private User user;
     Connection conn = null;
     DefaultTableModel model;
     ResultSet rs = null;
     Statement st = null;
 
-    public PeminjamanFunction(MainMethod mainMethod) {
-        getCenter();
+    public PeminjamanFunction(User user, MainMethod mainMethod) {
         this.mainMethod = mainMethod;
+        this.user = user;
         conn = Koneksi.koneksi();
+
         getTabel();
         getGedung();
+
         this.backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -47,10 +50,6 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
                 pinjamButtonActionPerformed(evt);
             }
         });
-    }
-
-    private void getCenter() {
-        setLocationRelativeTo(null);
     }
 
     private void getRuang() {
@@ -231,8 +230,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
             if (row != 0) {
                 JOptionPane.showMessageDialog(null, "Sukses");
                 setSesi();
-                PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(new MainMethod(this.mainMethod.getNIM(),
-                        this.mainMethod.getNama(), this.mainMethod.getStatus()));
+                PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(user, mainMethod);
                 peminjaman.setVisible(true);
                 this.dispose();
             }

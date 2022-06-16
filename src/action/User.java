@@ -6,17 +6,19 @@ public class User extends LoginForm{
     private String nim;
     private String nama;
     private String email;
-    private String noTelpon ;
+    private String noTelpon;
     private String password;
+    private String status;
     // public User(String nim,String password){
     //     th
     // }
-    public User(String nim,String nama,String email, String noTelpon,String password){
+    public User(String nim,String nama,String email, String noTelpon,String password, String status){
         this.nim = nim;
         this.nama = nama;
         this.email = email;
         this.noTelpon = noTelpon;
         this.password = password;
+        this.status = status;
     }
     public User(String nim,String password){
         this.nim = nim;
@@ -36,6 +38,9 @@ public class User extends LoginForm{
     }
     public String getPassword(){
         return this.password;
+    }
+    public String getStatus(){
+        return this.status;
     }
 
 }

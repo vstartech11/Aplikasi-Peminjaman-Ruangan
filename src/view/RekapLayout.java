@@ -18,6 +18,7 @@ public class RekapLayout extends javax.swing.JFrame {
         setTitle("Rekap");
         setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
+        setLocationRelativeTo(null);
 
         tableContent.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][] {

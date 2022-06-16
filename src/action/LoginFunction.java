@@ -48,7 +48,8 @@ public class LoginFunction extends LoginForm {
       st = conn.createStatement();
       rs = st.executeQuery(sql);
       if (rs.next()) {
-        MainLayout s = new MainMethod(rs.getString("nim"), rs.getString("nama"), rs.getString("status"));
+        User user = new User(rs.getString("nim"), rs.getString("nama"), rs.getString("email"), rs.getString("noTelp"), rs.getString("password"), rs.getString("status"));
+        MainLayout s = new MainMethod(user);
         JOptionPane.showMessageDialog(null, "Berhasil tersambung");
         s.setVisible(true);
         conn.close();

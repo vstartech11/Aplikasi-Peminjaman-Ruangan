@@ -22,14 +22,14 @@ import java.text.SimpleDateFormat;
 public class PengelolaanFunction extends Pengelolaan {
     List<String> listkode = new ArrayList<String>();
     DefaultTableModel model;
-    private MainMethod mainMethod;
+    private User user;
     Connection conn = null;
     ResultSet rs = null;
     Statement st = null;
 
-    public PengelolaanFunction(MainMethod mainMethod) {
+    public PengelolaanFunction(User user) {
         getCenter();
-        this.mainMethod = mainMethod;
+        this.user = user;
         conn = Koneksi.koneksi();
         getTable();
         jPanel9.setVisible(false);
@@ -162,8 +162,7 @@ public class PengelolaanFunction extends Pengelolaan {
                 JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
                 hapusRadioButton2.setSelected(false);
                 kodeInput2.setText(null);
-                Pengelolaan kelola = new PengelolaanFunction(new MainMethod(this.mainMethod.getNIM(),
-                        this.mainMethod.getNama(), this.mainMethod.getStatus()));
+                Pengelolaan kelola = new PengelolaanFunction(user);
                 kelola.setVisible(true);
                 this.dispose();
             }
@@ -173,7 +172,6 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        this.mainMethod.setVisible(true);
         this.dispose();
     }
 
@@ -196,8 +194,7 @@ public class PengelolaanFunction extends Pengelolaan {
                 int row = st.executeUpdate(sql);
                 if (row != 0) {
                     JOptionPane.showMessageDialog(null, "MIE SUKSES ISI 1");
-                    Pengelolaan kelola = new PengelolaanFunction(new MainMethod(this.mainMethod.getNIM(),
-                            this.mainMethod.getNama(), this.mainMethod.getStatus()));
+                    Pengelolaan kelola = new PengelolaanFunction(user);
                     kelola.setVisible(true);
                     this.dispose();
                 }
@@ -227,7 +224,6 @@ public class PengelolaanFunction extends Pengelolaan {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        this.mainMethod.setVisible(true);
         this.dispose();
     }
 }

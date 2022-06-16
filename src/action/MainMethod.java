@@ -7,9 +7,7 @@ import view.Pengelolaan;
 import view.RekapLayout;
 
 public class MainMethod extends MainLayout {
-    private String nim;
-    private String nama;
-    private String status;
+    private User user;
 
     public MainMethod() {
         getCenter();
@@ -29,17 +27,16 @@ public class MainMethod extends MainLayout {
         setLocationRelativeTo(null);
     }
 
-    public MainMethod(String nim, String nama, String status) {
-        this.nim = nim;
-        this.nama = nama;
-        this.status = status;
-        this.showNama.setText(nama);
-        this.showNim.setText(nim);
-        this.showStatus.setText(status);
+    public MainMethod(User user) {
+        this.user = user;
+
+        this.showNama.setText(this.user.getNama());
+        this.showNim.setText(this.user.getNim());
+        this.showStatus.setText(user.getStatus());
 
         loginMenu.setEnabled(false);
 
-        if (status.equals("ADMIN")) {
+        if (user.getStatus().equals("ADMIN")) {
             setPengelolaanVisibility(true);
         } else {
             setPengelolaanVisibility(false);
@@ -80,19 +77,19 @@ public class MainMethod extends MainLayout {
     }
 
     private void peminjamanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(new MainMethod(this.nim, this.nama, this.status));
+        PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(user, new MainMethod(user));
         peminjaman.setVisible(true);
         this.dispose();
     }
 
     private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        Pengelolaan pengelolaan = new PengelolaanFunction(new MainMethod(this.nim, this.nama, this.status));
+        Pengelolaan pengelolaan = new PengelolaanFunction(user);
         pengelolaan.setVisible(true);
         this.dispose();
     }
 
     private void rekapMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        RekapLayout rekapmenu = new RekapFunction(new MainMethod(this.nim, this.nama, this.status));
+        RekapLayout rekapmenu = new RekapFunction(new MainMethod(user));
         rekapmenu.setVisible(true);
         this.dispose();
     }

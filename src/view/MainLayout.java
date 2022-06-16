@@ -50,6 +50,7 @@ public class MainLayout extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(750, 230));
         setName("mainLayout"); // NOI18N
         setPreferredSize(new java.awt.Dimension(750, 230));
+        setLocationRelativeTo(null);
 
         namaText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         namaText.setText("Nama :");

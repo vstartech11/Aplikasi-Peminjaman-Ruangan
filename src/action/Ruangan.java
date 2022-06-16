@@ -20,6 +20,11 @@ public class Ruangan {
         this.statusSesi3 = statusSesi3;
         this.statusSesi4 = statusSesi4;
     }
+
+    public Ruangan(){
+
+    }
+
     public String getIdRuangan(){
         return this.idRuangan;
     }

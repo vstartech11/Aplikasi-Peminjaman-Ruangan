@@ -51,6 +51,7 @@ public class PeminjamanRuanganLayout extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1080, 690));
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 690));
+        setLocationRelativeTo(null);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(1080, 690));
         jPanel1.setMinimumSize(new java.awt.Dimension(1080, 690));

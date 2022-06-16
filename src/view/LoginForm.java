@@ -40,6 +40,7 @@ public class LoginForm extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(null);
+        setLocationRelativeTo(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1080, 720));
