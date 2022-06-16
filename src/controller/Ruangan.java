@@ -1,7 +1,6 @@
 package controller;
 
 public class Ruangan {
-    private String idRuangan;
     private String namaRuangan;
     private String kapasitasRuangan;
     private String statusSesi1;
@@ -21,7 +20,7 @@ public class Ruangan {
     public Ruangan(){
 
     }
-    
+
     public String getNamaRuangan(){
         return this.namaRuangan;
     }   
