@@ -13,7 +13,6 @@ public class Register extends RegisterLayout {
     int rows = 0;
 
     public Register() {
-        getCenter();
         conn = Koneksi.koneksi();
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,10 +44,6 @@ public class Register extends RegisterLayout {
                 }
             }
         });
-    }
-
-    private void getCenter() {
-        setLocationRelativeTo(null);
     }
 
     public void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_registerButtonActionPerformed

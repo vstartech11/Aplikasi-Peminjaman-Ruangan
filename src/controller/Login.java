@@ -14,7 +14,6 @@ public class Login extends LoginLayout {
 
   public Login() {
     conn = Koneksi.koneksi();
-    getCenter();
     nim_field.setEditable(true);
     btn_register.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -35,10 +34,6 @@ public class Login extends LoginLayout {
         }
       }
     });
-  }
-
-  private void getCenter() {
-    setLocationRelativeTo(null);
   }
 
   public void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {

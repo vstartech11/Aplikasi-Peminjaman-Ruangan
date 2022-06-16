@@ -10,7 +10,6 @@ public class Main extends MainLayout {
     private User user;
 
     public Main() {
-        getCenter();
         logoutMenu.setEnabled(false);
         peminjamanMenu.setEnabled(false);
         pengelolaanMenu.setEnabled(false);
@@ -21,10 +20,6 @@ public class Main extends MainLayout {
                 loginMenuActionPerformed(evt);
             }
         });
-    }
-
-    private void getCenter() {
-        setLocationRelativeTo(null);
     }
 
     public Main(User user) {

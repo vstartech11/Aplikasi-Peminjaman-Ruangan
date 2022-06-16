@@ -28,7 +28,6 @@ public class Pengelolaan extends PengelolaanLayout {
     Statement st = null;
 
     public Pengelolaan(User user) {
-        getCenter();
         this.user = user;
         conn = Koneksi.koneksi();
         getTable();
@@ -68,10 +67,6 @@ public class Pengelolaan extends PengelolaanLayout {
                 backButtonActionPerformed(evt);
             }
         });
-    }
-
-    private void getCenter() {
-        setLocationRelativeTo(null);
     }
 
     private String getIdRuangan(String a) {

@@ -13,7 +13,6 @@ public class Rekap extends RekapLayout {
   private Main mainMethod;
 
   public Rekap(Main mainMethod) {
-    getCenter();
     conn = Koneksi.koneksi();
     bersih();
     this.mainMethod = mainMethod;
@@ -34,10 +33,6 @@ public class Rekap extends RekapLayout {
         showAllButtonActionPerformed(evt);
       }
     });
-  }
-
-  private void getCenter() {
-    setLocationRelativeTo(null);
   }
 
   private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {
