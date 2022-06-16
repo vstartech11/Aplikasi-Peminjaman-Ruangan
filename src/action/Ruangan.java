@@ -20,28 +20,28 @@ public class Ruangan {
         this.statusSesi3 = statusSesi3;
         this.statusSesi4 = statusSesi4;
     }
-    protected String getIdRuangan(){
+    public String getIdRuangan(){
         return this.idRuangan;
     }
-    protected String getNamaRuangan(){
+    public String getNamaRuangan(){
         return this.namaRuangan;
     }   
-    protected String getIdFasilitas(){
+    public String getIdFasilitas(){
         return this.idFasilitas;
     }
-    protected String getKapasitasRuangan(){
+    public String getKapasitasRuangan(){
         return this.kapasitasRuangan;
     }
-    protected String getStatusSesi1(){
+    public String getStatusSesi1(){
         return this.statusSesi1;
     }
-    protected String getStatusSesi2(){
+    public String getStatusSesi2(){
         return this.statusSesi2;
     }
-    protected String getStatusSesi3(){
+    public String getStatusSesi3(){
         return this.statusSesi3;
     }
-    protected String getStatusSesi4(){
+    public String getStatusSesi4(){
         return this.statusSesi4;
     }
 }

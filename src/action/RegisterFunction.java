@@ -52,11 +52,12 @@ public class RegisterFunction extends Register {
     }
 
     public void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_registerButtonActionPerformed
-        String sql = "insert into tblUser(nim,nama,email,noTelp,password,status) values ('" + getNIM() + "','"
-                + getNama()
-                + "','" + getEmail() + "','" + getNoHP() + "','" + getPassword() + "','USER')";
+        User register = new User(nim.getText(), nama.getText(), email.getText(), noHp.getText(), String.valueOf(password.getPassword()));
+        String sql = "insert into tblUser(nim,nama,email,noTelp,password,status) values ('" + register.getNim() + "','"
+                + register.getNama()
+                + "','" + register.getEmail() + "','" + register.getNoTelpon() + "','" + register.getPassword() + "','USER')";
 
-        if (!isValidEmailAddress(getEmail())) {
+        if (!isValidEmailAddress(register.getEmail())) {
             JOptionPane.showMessageDialog(null, "Email tidak valid!");
         } else {
             int jawab = JOptionPane.showConfirmDialog(null, "Apakah data yang anda masukkan sudah benar?");

@@ -42,7 +42,8 @@ public class LoginFunction extends LoginForm {
   }
 
   public void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {
-    String sql = "select * from tblUser where nim='" + getNim() + "' and password='" + getPassword() + "'";
+    User login = new User(nim_field.getText(), String.valueOf(pass_field.getPassword()));
+    String sql = "select * from tblUser where nim='" + login.getNim() + "' and password='" + login.getPassword() + "'";
     try {
       st = conn.createStatement();
       rs = st.executeQuery(sql);

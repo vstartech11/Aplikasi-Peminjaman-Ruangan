@@ -174,33 +174,7 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public String getNama() {
-        return nama.getText();
-    }
-
-    public String getUsername() {
-        return username.getText();
-    }
-
-    public String getEmail() {
-        return email.getText();
-    }
-
-    public String getPassword() {
-        String passwordText = new String(password.getPassword());
-        return passwordText;
-    }
-
-    public String getNIM() {
-        String nimText = nim.getText();
-        return nimText;
-    }
-
-    public String getNoHP() {
-        String noHPText = noHp.getText();
-        return noHPText;
-    }
-
+    
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_backButtonActionPerformed
@@ -255,15 +229,15 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel aplikasiText;
     public javax.swing.JButton backButton;
     private javax.swing.JLabel daftarAkunText;
-    private javax.swing.JTextField email;
+    protected javax.swing.JTextField email;
     private javax.swing.JLabel emailText;
-    private javax.swing.JTextField nama;
+    protected javax.swing.JTextField nama;
     private javax.swing.JLabel namaText;
     protected javax.swing.JTextField nim;
     private javax.swing.JLabel nimText;
     private javax.swing.JLabel noHPText;
-    public javax.swing.JTextField noHp;
-    private javax.swing.JPasswordField password;
+    protected javax.swing.JTextField noHp;
+    protected javax.swing.JPasswordField password;
     private javax.swing.JLabel passwordText;
     public javax.swing.JButton registerButton;
     private javax.swing.JTextField username;

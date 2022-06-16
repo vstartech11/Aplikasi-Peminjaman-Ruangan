@@ -175,14 +175,6 @@ public class LoginForm extends javax.swing.JFrame {
 
     }// GEN-LAST:event_btn_login1ActionPerformed
 
-    public String getNim() {
-        return nim_field.getText();
-    }
-
-    public String getPassword() {
-        return String.valueOf(pass_field.getPassword());
-    }
-
     /**
      * @param args the command line arguments
      */

@@ -1,35 +1,41 @@
 package action;
 
-public class User {
+import view.LoginForm;
+
+public class User extends LoginForm{
     private String nim;
     private String nama;
     private String email;
     private String noTelpon ;
     private String password;
-    private String status;
-    public User(String nim,String nama,String email, String noTelpon,String passwird,String status){
+    // public User(String nim,String password){
+    //     th
+    // }
+    public User(String nim,String nama,String email, String noTelpon,String password){
         this.nim = nim;
         this.nama = nama;
         this.email = email;
         this.noTelpon = noTelpon;
-        this.status = status;
+        this.password = password;
     }
-    protected String getNIM(){
+    public User(String nim,String password){
+        this.nim = nim;
+        this.password = password;
+    }
+    public String getNim(){
         return this.nim;
     }
-    protected String getNama(){
+    public String getNama(){
         return this.nama;
     }
-    protected String getEmail(){
+    public String getEmail(){
         return this.email;
     }
-    protected String getNoTelpon(){
+    public String getNoTelpon(){
         return this.noTelpon;
     }
-    protected String getpassword(){
+    public String getPassword(){
         return this.password;
     }
-    protected String getStatus(){
-        return this.status;
-    }
+
 }

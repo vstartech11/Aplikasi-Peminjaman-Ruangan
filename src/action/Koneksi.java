@@ -2,8 +2,6 @@ package action;
 
 import java.sql.*;
 import javax.swing.*;
-import javax.swing.table.TableModel;
-
 public class Koneksi {
     Connection conn = null;
     ResultSet rs = null;

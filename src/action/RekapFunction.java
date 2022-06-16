@@ -3,7 +3,7 @@ package action;
 import view.RekapLayout;
 import java.sql.*;
 import javax.swing.table.*;
-import java.sql.*;
+
 
 public class RekapFunction extends RekapLayout {
   Connection conn = null;
