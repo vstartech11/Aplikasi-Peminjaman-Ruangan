@@ -1,15 +1,26 @@
 package controller;
 
+import java.util.ArrayList;
+
 public class Kelas extends Ruangan{
   private String idRuangan;
+  private String fasilitas;
   private String keteranganRuangan;
-  private int banyakFasilitas;
 
-  public Kelas(String namaRuangan,String kapasitasRuangan,String statusSesi1,String statusSesi2,String statusSesi3,String statusSesi4,String idRuangan,String keteranganRuangan, int banyakFasilitas) {
-    super(namaRuangan, kapasitasRuangan, statusSesi1, statusSesi2, statusSesi3, statusSesi4);
+  public Kelas(String namaRuangan, String kapasitasRuangan, ArrayList<String> statusSesi, String idRuangan, String fasilitas) {
+    super(namaRuangan, kapasitasRuangan, statusSesi);
     this.idRuangan = idRuangan;
-    this.keteranganRuangan = keteranganRuangan;
-    this.banyakFasilitas = banyakFasilitas;
+    this.fasilitas = fasilitas;
+  }
+
+  public Kelas(String namaRuangan, String kapasitasRuangan, String idRuangan, String fasilitas) {
+    super(namaRuangan, kapasitasRuangan);
+    this.idRuangan = idRuangan;
+    this.fasilitas = fasilitas;
+  }
+
+  public Kelas(){
+
   }
 
   public String getIdRuangan(){
@@ -20,7 +31,7 @@ public class Kelas extends Ruangan{
     return this.keteranganRuangan;
   }
 
-  public int getBanyakFasilitas(){
-    return this.banyakFasilitas;
+  public String getFasilitas() {
+    return this.fasilitas;
   }
 }

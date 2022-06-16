@@ -23,12 +23,14 @@ public class Pengelolaan extends PengelolaanLayout {
     List<String> listkode = new ArrayList<String>();
     DefaultTableModel model;
     private User user;
+    private Main mainMethod;
     Connection conn = null;
     ResultSet rs = null;
     Statement st = null;
 
-    public Pengelolaan(User user) {
+    public Pengelolaan(User user, Main mainMethod) {
         this.user = user;
+        this.mainMethod = mainMethod;
         conn = Koneksi.koneksi();
         getTable();
         jPanel9.setVisible(false);
@@ -157,7 +159,7 @@ public class Pengelolaan extends PengelolaanLayout {
                 JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
                 hapusRadioButton2.setSelected(false);
                 kodeInput2.setText(null);
-                PengelolaanLayout kelola = new Pengelolaan(user);
+                PengelolaanLayout kelola = new Pengelolaan(user, this.mainMethod);
                 kelola.setVisible(true);
                 this.dispose();
             }
@@ -189,7 +191,7 @@ public class Pengelolaan extends PengelolaanLayout {
                 int row = st.executeUpdate(sql);
                 if (row != 0) {
                     JOptionPane.showMessageDialog(null, "MIE SUKSES ISI 1");
-                    PengelolaanLayout kelola = new Pengelolaan(user);
+                    PengelolaanLayout kelola = new Pengelolaan(user, this.mainMethod);
                     kelola.setVisible(true);
                     this.dispose();
                 }
