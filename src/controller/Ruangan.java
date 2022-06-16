@@ -9,8 +9,7 @@ public class Ruangan {
     private String statusSesi3;
     private String statusSesi4;
 
-    public Ruangan(String idRuangan,String namaRuangan,String kapasitasRuangan,String statusSesi1,String statusSesi2,String statusSesi3,String statusSesi4){
-        this.idRuangan = idRuangan;
+    public Ruangan(String namaRuangan,String kapasitasRuangan,String statusSesi1,String statusSesi2,String statusSesi3,String statusSesi4){
         this.namaRuangan =namaRuangan;
         this.kapasitasRuangan = kapasitasRuangan;
         this.statusSesi1 = statusSesi1;
@@ -22,10 +21,7 @@ public class Ruangan {
     public Ruangan(){
 
     }
-
-    public String getIdRuangan(){
-        return this.idRuangan;
-    }
+    
     public String getNamaRuangan(){
         return this.namaRuangan;
     }   
