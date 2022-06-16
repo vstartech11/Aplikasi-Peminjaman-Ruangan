@@ -8,12 +8,12 @@ package view;
  *
  * @author USER
  */
-public class Pengelolaan extends javax.swing.JFrame {
+public class PengelolaanLayout extends javax.swing.JFrame {
 
         /**
          * Creates new form Pengelolaan
          */
-        public Pengelolaan() {
+        public PengelolaanLayout() {
                 initComponents();
         }
 
@@ -464,19 +464,19 @@ public class Pengelolaan extends javax.swing.JFrame {
                                 }
                         }
                 } catch (ClassNotFoundException ex) {
-                        java.util.logging.Logger.getLogger(Pengelolaan.class.getName()).log(
+                        java.util.logging.Logger.getLogger(PengelolaanLayout.class.getName()).log(
                                         java.util.logging.Level.SEVERE, null,
                                         ex);
                 } catch (InstantiationException ex) {
-                        java.util.logging.Logger.getLogger(Pengelolaan.class.getName()).log(
+                        java.util.logging.Logger.getLogger(PengelolaanLayout.class.getName()).log(
                                         java.util.logging.Level.SEVERE, null,
                                         ex);
                 } catch (IllegalAccessException ex) {
-                        java.util.logging.Logger.getLogger(Pengelolaan.class.getName()).log(
+                        java.util.logging.Logger.getLogger(PengelolaanLayout.class.getName()).log(
                                         java.util.logging.Level.SEVERE, null,
                                         ex);
                 } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-                        java.util.logging.Logger.getLogger(Pengelolaan.class.getName()).log(
+                        java.util.logging.Logger.getLogger(PengelolaanLayout.class.getName()).log(
                                         java.util.logging.Level.SEVERE, null,
                                         ex);
                 }
@@ -485,7 +485,7 @@ public class Pengelolaan extends javax.swing.JFrame {
                 /* Create and display the form */
                 java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                                new Pengelolaan().setVisible(true);
+                                new PengelolaanLayout().setVisible(true);
                         }
                 });
         }

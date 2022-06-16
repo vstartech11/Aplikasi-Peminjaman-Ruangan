@@ -1,18 +1,18 @@
-package action;
+package controller;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
-import view.Register;
-import view.LoginForm;
+import view.RegisterLayout;
+import view.LoginLayout;
 import java.awt.event.*;
 
-public class RegisterFunction extends Register {
+public class Register extends RegisterLayout {
     Connection conn = null;
     ResultSet rs = null;
     Statement st = null;
     int rows = 0;
 
-    public RegisterFunction() {
+    public Register() {
         getCenter();
         conn = Koneksi.koneksi();
         registerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +76,7 @@ public class RegisterFunction extends Register {
                         rows = st.executeUpdate(sql);
                         if (rows != 0) {
                             JOptionPane.showMessageDialog(null, "Akun berhasil didaftarkan, Silahkan login ");
-                            LoginForm s = new LoginFunction();
+                            LoginLayout s = new Login();
                             s.setVisible(true);
                             conn.close();
                             dispose();
@@ -94,7 +94,7 @@ public class RegisterFunction extends Register {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_backButtonActionPerformed
-        LoginForm s = new LoginFunction();
+        LoginLayout s = new Login();
         s.setVisible(true);
         dispose();
     }

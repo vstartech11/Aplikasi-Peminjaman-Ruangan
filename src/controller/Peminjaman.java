@@ -1,6 +1,6 @@
-package action;
+package controller;
 
-import view.PeminjamanRuanganLayout;
+import view.PeminjamanLayout;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.Arrays;    
 import java.util.List;
 
-public class PeminjamanFunction extends PeminjamanRuanganLayout {
-    private MainMethod mainMethod;
+public class Peminjaman extends PeminjamanLayout {
+    private Main mainMethod;
     private User user;
     Connection conn = null;
     DefaultTableModel model;
     ResultSet rs = null;
     Statement st = null;
 
-    public PeminjamanFunction(User user, MainMethod mainMethod) {
+    public Peminjaman(User user, Main mainMethod) {
         this.mainMethod = mainMethod;
         this.user = user;
         conn = Koneksi.koneksi();
@@ -230,7 +230,7 @@ public class PeminjamanFunction extends PeminjamanRuanganLayout {
             if (row != 0) {
                 JOptionPane.showMessageDialog(null, "Sukses");
                 setSesi();
-                PeminjamanRuanganLayout peminjaman = new PeminjamanFunction(user, mainMethod);
+                PeminjamanLayout peminjaman = new Peminjaman(user, mainMethod);
                 peminjaman.setVisible(true);
                 this.dispose();
             }

@@ -1,19 +1,17 @@
-package action;
+package controller;
 
 public class Ruangan {
     private String idRuangan;
     private String namaRuangan;
-    private String idFasilitas;
     private String kapasitasRuangan;
     private String statusSesi1;
     private String statusSesi2;
     private String statusSesi3;
     private String statusSesi4;
 
-    public Ruangan(String idRuangan,String namaRuangan, String idFasilitas,String kapasitasRuangan,String statusSesi1,String statusSesi2,String statusSesi3,String statusSesi4){
-        this.idFasilitas = idRuangan;
+    public Ruangan(String idRuangan,String namaRuangan,String kapasitasRuangan,String statusSesi1,String statusSesi2,String statusSesi3,String statusSesi4){
+        this.idRuangan = idRuangan;
         this.namaRuangan =namaRuangan;
-        this.idFasilitas = idFasilitas;
         this.kapasitasRuangan = kapasitasRuangan;
         this.statusSesi1 = statusSesi1;
         this.statusSesi2 = statusSesi2;
@@ -31,9 +29,6 @@ public class Ruangan {
     public String getNamaRuangan(){
         return this.namaRuangan;
     }   
-    public String getIdFasilitas(){
-        return this.idFasilitas;
-    }
     public String getKapasitasRuangan(){
         return this.kapasitasRuangan;
     }
