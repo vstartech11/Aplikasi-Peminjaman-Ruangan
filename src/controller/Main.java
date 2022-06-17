@@ -78,7 +78,7 @@ public class Main extends MainLayout {
     }
 
     private void pengelolaanMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginMenuActionPerformed
-        PengelolaanLayout pengelolaan = new Pengelolaan(user);
+        PengelolaanLayout pengelolaan = new Pengelolaan(user, new Main(user));
         pengelolaan.setVisible(true);
         this.dispose();
     }
